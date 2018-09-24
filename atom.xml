@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.moonstack.org/"/>
-  <updated>2018-09-24T09:18:15.315Z</updated>
+  <updated>2018-09-24T09:24:22.595Z</updated>
   <id>http://blog.moonstack.org/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://blog.moonstack.org/2018/%E5%BC%80%E7%AF%87/"/>
     <id>http://blog.moonstack.org/2018/开篇/</id>
     <published>2018-09-24T01:33:28.000Z</published>
-    <updated>2018-09-24T09:18:15.315Z</updated>
+    <updated>2018-09-24T09:24:22.595Z</updated>
     
-    <content type="html"><![CDATA[<h4 id="0x00-前面的废话"><a href="#0x00-前面的废话" class="headerlink" title="0x00 前面的废话"></a>0x00 前面的废话</h4><p>这篇文档出现在即将上线的MoonStack之际….<br>其实,MoonStack要以怎样的形态出现,一直以来我们并没有一个完整目标. 从 运维工具 –&gt;&gt; 数据分析工具  –&gt;&gt; 再到现在的 威胁收集工具 等等. 没有变更的是使用基于日志的分析引擎. 这也包括了时下的行业大数据工具诸如: Hadoop等等,无论是哪种方式实现,终归是要改变人们的生活方式与生产形态. 这也是MoonStack的初衷, 可以给你带来不一样的感受.</p><h4 id="0x02-Hello-World"><a href="#0x02-Hello-World" class="headerlink" title="0x02 Hello World!"></a>0x02 Hello World!</h4><p>hexo还是不太会用….图片还不知道怎么搞出来…<br>2015年7月初, Owasp大会. baidu的云鹏大神分享了他们正在实现的产品的思路与架构,受益匪浅.<br>这也是为MoonStack打开了一扇窗.<br>但毕竟我一直在做安全, 无论从甲方还是乙方, 我们都更希望能直接的发现威胁.<br>假设当前您的业务被攻击,您正好又是一个负责任的负责人.<br>请思考几个问题:</p><ol><li>黑客是怎么进来的?</li><li>黑客的水平怎么样?</li><li>黑客都做了点什么?</li><li>黑客属于个人还是团队?</li><li>对业务系统造成了哪些危害?<br>我想,这几个简单的问题, 就算是经验老道的大神,也要煞费一番苦心.<br>我不记得是谁说过,假设是我说的:”人类创造工具是为了提升工作质量,为人类解决问题的!” 这也是MoonStack的初衷.</li></ol><h4 id="0x03-小结"><a href="#0x03-小结" class="headerlink" title="0x03 小结"></a>0x03 小结</h4><p>这个blog我暂时还不会放图,不然图片就可以上来了, 下一篇介绍&lt;<moonstack v1.0="">&gt;业务架构!</moonstack></p>]]></content>
+    <content type="html"><![CDATA[<h4 id="0x00-前面的废话"><a href="#0x00-前面的废话" class="headerlink" title="0x00 前面的废话"></a>0x00 前面的废话</h4><p>这篇文档出现在即将上线的MoonStack之际….<br>其实,MoonStack要以怎样的形态出现,一直以来我们并没有一个完整目标. 从 运维工具 –&gt;&gt; 数据分析工具  –&gt;&gt; 再到现在的 威胁收集工具 等等. 没有变更的是使用基于日志的分析引擎. 这也包括了时下的行业大数据工具诸如: Hadoop等等,无论是哪种方式实现,终归是要改变人们的生活方式与生产形态. 这也是MoonStack的初衷, 可以给你带来不一样的感受.</p><h4 id="0x02-Hello-World"><a href="#0x02-Hello-World" class="headerlink" title="0x02 Hello World!"></a>0x02 Hello World!</h4><p>hexo还是不太会用….图片还不知道怎么搞出来…<br>2015年7月初, Owasp大会. baidu的云鹏大神分享了他们正在实现的产品的思路与架构,受益匪浅.<br>这也是为MoonStack打开了一扇窗.<br>但毕竟我一直在做安全, 无论从甲方还是乙方, 我们都更希望能直接的发现威胁.<br>假设当前您的业务被攻击,您正好又是一个负责任的负责人.<br>请思考几个问题:</p><ol><li>黑客是怎么进来的?</li><li>黑客的水平怎么样?</li><li>黑客都做了点什么?</li><li>黑客属于个人还是团队?</li><li>对业务系统造成了哪些危害?<br>我想,这几个简单的问题, 就算是经验老道的大神,也要煞费一番苦心.<br>我不记得是谁说过,假设是我说的:”人类创造工具是为了提升工作质量,为人类解决问题的!” 这也是MoonStack的初衷.</li></ol><h4 id="0x03-小结"><a href="#0x03-小结" class="headerlink" title="0x03 小结"></a>0x03 小结</h4><p>这个blog我暂时还不会放图,不然图片就可以上来了, 下一篇介绍’MoonStack V1.0’业务架构.</p>]]></content>
     
     <summary type="html">
     
