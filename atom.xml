@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>MoonStack 官方blog</title>
   
-  <subtitle>MoonStack&#39;s Blog</subtitle>
+  <subtitle>MoonStack Blog</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.moonstack.org/"/>
