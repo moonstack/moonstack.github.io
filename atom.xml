@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.moonstack.org/"/>
-  <updated>2018-09-23T22:26:53.148Z</updated>
+  <updated>2018-09-24T01:38:54.238Z</updated>
   <id>http://blog.moonstack.org/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>开篇</title>
+    <link href="http://blog.moonstack.org/2018/09/24/%E5%BC%80%E7%AF%87/"/>
+    <id>http://blog.moonstack.org/2018/09/24/开篇/</id>
+    <published>2018-09-24T01:33:28.000Z</published>
+    <updated>2018-09-24T01:38:54.238Z</updated>
+    
+    <content type="html"><![CDATA[<p>很久没有写blog, 在MoonStack即将上线之时, 还是需要记录一下MoonStack的成长过程.</p><p>虽然hexo很方便, 但是还是需要学习一下, 不太会用.</p><p>(日后再补充….)</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;很久没有写blog, 在MoonStack即将上线之时, 还是需要记录一下MoonStack的成长过程.&lt;/p&gt;
+&lt;p&gt;虽然hexo很方便, 但是还是需要学习一下, 不太会用.&lt;/p&gt;
+&lt;p&gt;(日后再补充….)&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+    
+      <category term="MoonStack 开篇" scheme="http://blog.moonstack.org/tags/MoonStack-%E5%BC%80%E7%AF%87/"/>
+    
+  </entry>
   
   <entry>
     <title>Hello World</title>
