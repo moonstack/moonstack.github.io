@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MoonStack</title>
+  <meta name="description" content="Personal notes on systems, quant, and code.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='26' font-size='28' font-family='monospace'%3EM%3C/text%3E%3C/svg%3E">
+  <style>
+    :root {
+      --bg: #f8f6f1;
+      --fg: #2a2722;
+      --muted: #847d72;
+      --accent: #5a4a3a;
+      --rule: #d8d2c6;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #1a1814;
+        --fg: #e8e2d4;
+        --muted: #8a8275;
+        --accent: #c4b89e;
+        --rule: #3a342c;
+      }
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--fg);
+      font-family: ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+      font-size: 15px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    main {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 80px 28px 120px;
+    }
+    .mark {
+      display: inline-block;
+      width: 36px;
+      height: 36px;
+      line-height: 36px;
+      text-align: center;
+      border: 1px solid var(--fg);
+      font-weight: 600;
+      margin-bottom: 36px;
+    }
+    h1 {
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      margin: 0 0 6px 0;
+    }
+    .tag {
+      color: var(--muted);
+      font-size: 13px;
+      margin: 0 0 56px 0;
+    }
+    section { margin: 48px 0; }
+    h2 {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0 0 16px 0;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--rule);
+    }
+    p { margin: 0 0 16px 0; }
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    li {
+      padding: 6px 0;
+      color: var(--fg);
+    }
+    li::before {
+      content: "—  ";
+      color: var(--muted);
+    }
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid var(--rule);
+      transition: border-color .15s;
+    }
+    a:hover { border-color: var(--accent); }
+    .links li { padding: 4px 0; }
+    .links a {
+      display: inline-block;
+      min-width: 80px;
+      border: none;
+    }
+    .links a::after {
+      content: " →";
+      color: var(--muted);
+    }
+    .links .soon {
+      color: var(--muted);
+    }
+    .links .soon::after {
+      content: " (soon)";
+      font-size: 11px;
+      color: var(--muted);
+    }
+    footer {
+      margin-top: 80px;
+      padding-top: 24px;
+      border-top: 1px solid var(--rule);
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.6;
+    }
+    footer p { margin: 0 0 8px 0; }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="mark">M</div>
+    <h1>MoonStack</h1>
+    <p class="tag">Personal notes on systems, quant, and code.</p>
+
+    <section>
+      <h2>About</h2>
+      <p>An independent researcher's space. No team, no clients, no signals.</p>
+      <p>I write about what I'm reading and building &mdash; mostly trading systems, factor models, machine learning on time series, and the occasional essay on technology and incentives.</p>
+    </section>
+
+    <section>
+      <h2>Now</h2>
+      <ul>
+        <li>Factor decay and the geometry of regime change</li>
+        <li>Machine learning on noisy financial time series</li>
+        <li>Notes on AI economics and pricing</li>
+        <li>The strange shape of independent work</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Elsewhere</h2>
+      <ul class="links">
+        <li><a href="https://github.com/0x01feng">GitHub</a></li>
+        <li><a class="soon">Substack</a></li>
+        <li><a class="soon">X / Twitter</a></li>
+      </ul>
+    </section>
+
+    <footer>
+      <p>This is a personal site. Content reflects the author's views and is offered for reading only &mdash; not investment advice, not a service, not a solicitation.</p>
+      <p>&copy; MoonStack &middot; moonstack.org</p>
+    </footer>
+  </main>
+</body>
+</html>
