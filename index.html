@@ -190,6 +190,8 @@
     background: linear-gradient(180deg, var(--ink-3), var(--ink-2));
     border: 1px solid var(--line-soft); border-radius: 20px; padding: 34px;
   }
+  .flagship.solo { grid-template-columns: 1fr; }
+  .flagship.solo .fl-copy { max-width: 64ch; }
   .fl-tag {
     font-family: "Bricolage Grotesque", sans-serif; font-weight: 700;
     font-size: clamp(21px, 2.7vw, 28px); letter-spacing: -.01em; color: #f1f4fb;
@@ -334,13 +336,13 @@
     <div class="sec-head">
       <div>
         <span class="eyebrow">Trading tools</span>
-        <h2>复盘镜 <span class="latin">Trading Mirror</span> <span class="chip live">Live</span></h2>
+        <h2>Trading Mirror <span class="chip live">Live</span></h2>
       </div>
       <p>// local-first · your own data</p>
     </div>
-    <article class="flagship">
+    <article class="flagship solo">
       <div class="fl-copy">
-        <p class="fl-tag">Don't predict the market. Verify your hypotheses.<span class="zh">不预测涨跌，只验证假设</span></p>
+        <p class="fl-tag">Don't predict the market. Verify your hypotheses.</p>
         <p class="fl-desc">Write a falsifiable hypothesis before you open a trade, then reconcile it at the close. The bias microscope shows which hypothesis types actually carry edge, where execution leaks money, and what was luck versus skill.</p>
         <ul class="fl-points">
           <li>Edge × execution, shown separately</li>
@@ -348,13 +350,10 @@
           <li>Luck vs skill — not just P&amp;L</li>
         </ul>
         <div class="fl-cta">
-          <a class="btn solid" href="/mirror/">Open 复盘镜 →</a>
+          <a class="btn solid" href="/mirror/">Open Trading Mirror →</a>
           <span class="fl-meta">Free · runs locally · bring your own AI key</span>
         </div>
       </div>
-      <a class="fl-shot" href="/mirror/" aria-label="Open 复盘镜">
-        <img src="mirror-dashboard.png" alt="复盘镜 dashboard — hypothesis verification rate, R-multiple curve, edge × execution quadrant" />
-      </a>
     </article>
   </section>
 
