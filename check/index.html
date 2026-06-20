@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Do you actually have an edge? — a 2-minute self-check · MoonStack</title>
-<meta name="description" content="Fifteen blunt questions that tell you whether your trading edge is a measured fact or a feeling. No email to see your result." />
+<title>Edge self-check · MoonStack</title>
+<meta name="description" content="Fifteen blunt questions that tell you whether your trading edge is a measured fact or a feeling. No email to see your result. EN · 简体 · 繁體 · 日本語 · 한국어." />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='13' fill='%23f4e2b0'/%3E%3Cg fill='%23bfa256'%3E%3Ccircle cx='12' cy='12' r='3.2'/%3E%3Ccircle cx='21' cy='15' r='2.2'/%3E%3Ccircle cx='15' cy='21' r='1.8'/%3E%3C/g%3E%3C/svg%3E" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -13,300 +13,291 @@
   :root {
     --ink:#0d1124; --ink-2:#141a31; --ink-3:#181f3b; --line:#29325a; --line-soft:#1f2747;
     --moon:#f4e2b0; --moon-dim:#d8c184; --silver:#d8dff4; --mist:#8d96bb; --faint:#59628c;
-    --live:#79cdaa; --warn:#d98c6a; --maxw:760px;
+    --cjk:"Noto Sans SC","Noto Sans TC","Noto Sans JP","Noto Sans KR","PingFang SC","Hiragino Sans","Microsoft YaHei","Malgun Gothic";
+    --sans:"IBM Plex Sans",var(--cjk),system-ui,-apple-system,Segoe UI,sans-serif;
+    --display:"Bricolage Grotesque",var(--cjk),system-ui,sans-serif;
+    --mono:"IBM Plex Mono",var(--cjk),ui-monospace,monospace;
+    --maxw:720px;
   }
   * { box-sizing:border-box; }
   html { scroll-behavior:smooth; -webkit-text-size-adjust:100%; }
-  body {
-    margin:0; background:var(--ink); color:var(--silver);
-    font-family:"IBM Plex Sans",system-ui,-apple-system,Segoe UI,sans-serif;
-    font-size:16px; line-height:1.65; -webkit-font-smoothing:antialiased;
-  }
+  body { margin:0; background:var(--ink); color:var(--silver); font-family:var(--sans);
+    font-size:16px; line-height:1.65; -webkit-font-smoothing:antialiased; }
   body::before { content:""; position:fixed; inset:0; pointer-events:none; z-index:0;
     background:radial-gradient(620px 420px at 84% -8%, rgba(244,226,176,.07), transparent 70%),
                radial-gradient(900px 600px at 10% 110%, rgba(58,80,150,.10), transparent 70%); }
   .wrap { max-width:var(--maxw); margin:0 auto; padding:0 24px; position:relative; z-index:1; }
   a { color:inherit; }
-  .eyebrow { font-family:"IBM Plex Mono",monospace; font-size:11.5px; letter-spacing:.22em;
-    text-transform:uppercase; color:var(--moon-dim); font-weight:500; }
+  .eyebrow { font-family:var(--mono); font-size:11.5px; letter-spacing:.22em; text-transform:uppercase; color:var(--moon-dim); font-weight:500; }
 
-  header.bar { display:flex; align-items:center; justify-content:space-between; padding:22px 0 0; }
-  .brand { display:flex; align-items:center; gap:11px; text-decoration:none; }
-  .brand .mk { width:24px; height:24px; border-radius:50%; flex:none;
-    background:
-      radial-gradient(3px 3px at 8px 8px,#bfa256 60%,transparent 62%),
+  header.bar { display:flex; align-items:center; justify-content:space-between; padding:20px 0 0; gap:12px; flex-wrap:wrap; }
+  .brand { display:flex; align-items:center; gap:10px; text-decoration:none; }
+  .brand .mk { width:23px; height:23px; border-radius:50%; flex:none;
+    background:radial-gradient(3px 3px at 8px 8px,#bfa256 60%,transparent 62%),
       radial-gradient(2px 2px at 16px 12px,#bfa256 60%,transparent 62%),
-      radial-gradient(1.5px 1.5px at 11px 16px,#bfa256 60%,transparent 62%),
-      var(--moon);
+      radial-gradient(1.5px 1.5px at 11px 16px,#bfa256 60%,transparent 62%),var(--moon);
     box-shadow:0 0 12px rgba(244,226,176,.3); }
   .brand .nm { font-weight:600; color:var(--silver); font-size:15px; }
-  header.bar nav a { font-family:"IBM Plex Mono",monospace; font-size:13px; color:var(--mist); text-decoration:none; }
-  header.bar nav a:hover { color:var(--silver); }
+  .langbar { display:flex; gap:6px; flex-wrap:wrap; }
+  .langbar button { font-family:var(--mono); font-size:12px; color:var(--mist); background:none;
+    border:1px solid var(--line-soft); border-radius:7px; padding:5px 10px; cursor:pointer; transition:.14s; }
+  .langbar button:hover { border-color:var(--line); color:var(--silver); }
+  .langbar button.on { color:var(--moon); border-color:var(--moon-dim); background:rgba(244,226,176,.06); }
 
-  .hero { padding:62px 0 30px; }
-  .hero h1 { font-family:"Bricolage Grotesque",sans-serif; font-weight:800;
-    font-size:clamp(32px,6vw,52px); line-height:1.02; letter-spacing:-.02em; margin:16px 0 0; color:#f3f5fb; }
+  #main { min-height:50vh; padding-top:6px; }
+
+  /* intro */
+  .hero { padding:54px 0 26px; }
+  .hero h1 { font-family:var(--display); font-weight:800; font-size:clamp(30px,5.6vw,50px);
+    line-height:1.04; letter-spacing:-.02em; margin:16px 0 0; color:#f3f5fb; }
   .hero h1 .glow { color:var(--moon); }
-  .hero .lede { margin:20px 0 0; color:var(--mist); font-size:18px; max-width:38em; }
-  .hero .meta { margin:22px 0 0; font-family:"IBM Plex Mono",monospace; font-size:12.5px; color:var(--faint);
-    display:flex; gap:18px; flex-wrap:wrap; }
+  .hero .lede { margin:20px 0 0; color:var(--mist); font-size:17.5px; max-width:38em; }
+  .hero .meta { margin:22px 0 28px; font-family:var(--mono); font-size:12.5px; color:var(--faint); display:flex; gap:16px; flex-wrap:wrap; }
   .hero .meta b { color:var(--moon-dim); font-weight:500; }
 
-  /* progress */
-  .progress { position:sticky; top:0; z-index:5; background:rgba(13,17,36,.86);
-    backdrop-filter:blur(8px); border-bottom:1px solid var(--line-soft); padding:12px 0; margin-top:30px; }
-  .progress .bar { height:4px; background:var(--line-soft); border-radius:999px; overflow:hidden; }
-  .progress .bar i { display:block; height:100%; width:0%; background:var(--moon); transition:width .25s; }
-  .progress .lbl { font-family:"IBM Plex Mono",monospace; font-size:11.5px; color:var(--faint); margin-bottom:7px;
-    display:flex; justify-content:space-between; }
-
-  .quiz { padding:18px 0 10px; }
-  .q { padding:24px 0; border-bottom:1px solid var(--line-soft); }
-  .q .qn { font-family:"IBM Plex Mono",monospace; font-size:12px; color:var(--moon-dim); letter-spacing:.06em; }
-  .q .qt { font-family:"Bricolage Grotesque",sans-serif; font-weight:600; font-size:19px; color:#eef1f9;
-    margin:8px 0 16px; line-height:1.3; }
-  .opts { display:flex; flex-direction:column; gap:9px; }
-  .opt { display:flex; align-items:flex-start; gap:11px; padding:13px 15px; border:1px solid var(--line-soft);
-    border-radius:11px; cursor:pointer; transition:border-color .14s, background .14s; background:var(--ink-2); }
-  .opt:hover { border-color:var(--line); }
-  .opt.sel { border-color:var(--moon-dim); background:rgba(244,226,176,.06); }
-  .opt input { position:absolute; opacity:0; pointer-events:none; }
-  .opt .dot { width:16px; height:16px; border-radius:50%; border:1.5px solid var(--faint); flex:none; margin-top:2px; position:relative; }
-  .opt.sel .dot { border-color:var(--moon); }
-  .opt.sel .dot::after { content:""; position:absolute; inset:3px; border-radius:50%; background:var(--moon); }
-  .opt .ot { font-size:14.5px; color:var(--silver); }
-
-  .submit-wrap { padding:30px 0 8px; text-align:center; }
-  .btn { display:inline-flex; align-items:center; gap:8px; font-family:"IBM Plex Mono",monospace;
-    font-size:14px; text-decoration:none; padding:13px 26px; border-radius:10px; border:1px solid var(--line);
+  .btn { display:inline-flex; align-items:center; gap:8px; font-family:var(--mono); font-size:14px;
+    text-decoration:none; padding:13px 26px; border-radius:10px; border:1px solid var(--line);
     color:var(--silver); cursor:pointer; transition:.15s; background:none; }
   .btn:hover { border-color:var(--moon-dim); }
   .btn.solid { background:var(--moon); color:#221c08; border-color:var(--moon); font-weight:500; }
   .btn.solid:hover { background:#fbeec1; }
-  .btn.solid:disabled { opacity:.4; cursor:not-allowed; background:var(--moon); }
-  .submit-note { margin-top:12px; font-family:"IBM Plex Mono",monospace; font-size:11.5px; color:var(--faint); }
+  .btn.ghost { font-size:13px; padding:9px 14px; color:var(--mist); }
+
+  /* quiz */
+  .qhead { padding:26px 0 0; }
+  .qbar { height:4px; background:var(--line-soft); border-radius:999px; overflow:hidden; margin-top:8px; }
+  .qbar i { display:block; height:100%; background:var(--moon); transition:width .3s; }
+  .qmeta { font-family:var(--mono); font-size:11.5px; color:var(--faint); display:flex; justify-content:space-between; }
+  .qcard { padding:30px 0 8px; animation:slide .28s ease both; }
+  @keyframes slide { from{opacity:0; transform:translateX(14px)} to{opacity:1; transform:none} }
+  .qcard .qn { font-family:var(--mono); font-size:12px; color:var(--moon-dim); letter-spacing:.06em; }
+  .qcard .qt { font-family:var(--display); font-weight:700; font-size:clamp(20px,3.2vw,26px); color:#eef1f9;
+    margin:10px 0 20px; line-height:1.28; }
+  .opts { display:flex; flex-direction:column; gap:10px; }
+  .opt { display:flex; align-items:flex-start; gap:12px; padding:15px 17px; border:1px solid var(--line-soft);
+    border-radius:12px; cursor:pointer; transition:border-color .14s, background .14s, transform .1s; background:var(--ink-2); text-align:left; width:100%; font:inherit; color:inherit; }
+  .opt:hover { border-color:var(--line); }
+  .opt.sel { border-color:var(--moon); background:rgba(244,226,176,.08); }
+  .opt .dot { width:17px; height:17px; border-radius:50%; border:1.5px solid var(--faint); flex:none; margin-top:2px; position:relative; }
+  .opt.sel .dot { border-color:var(--moon); }
+  .opt.sel .dot::after { content:""; position:absolute; inset:3px; border-radius:50%; background:var(--moon); }
+  .opt .ot { font-size:15px; color:var(--silver); }
+  .qnav { display:flex; justify-content:space-between; align-items:center; margin-top:22px; }
+  .qnav .note { font-family:var(--mono); font-size:11.5px; color:var(--faint); }
 
   /* result */
-  .result { display:none; padding:40px 0 20px; }
-  .result.show { display:block; animation:fade .5s ease both; }
+  .result { padding:34px 0 10px; animation:fade .5s ease both; }
   @keyframes fade { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:none} }
   .verdict-card { background:linear-gradient(180deg,var(--ink-3),var(--ink-2)); border:1px solid var(--line);
     border-radius:18px; padding:30px 28px; }
-  .verdict-card .score { font-family:"IBM Plex Mono",monospace; font-size:12px; letter-spacing:.12em;
-    text-transform:uppercase; color:var(--moon-dim); }
-  .verdict-card h2 { font-family:"Bricolage Grotesque",sans-serif; font-weight:800; font-size:clamp(24px,4.4vw,34px);
-    letter-spacing:-.015em; margin:10px 0 14px; color:#f3f5fb; line-height:1.1; }
+  .verdict-card .score { font-family:var(--mono); font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:var(--moon-dim); }
+  .verdict-card h2 { font-family:var(--display); font-weight:800; font-size:clamp(23px,4.2vw,33px);
+    letter-spacing:-.015em; margin:10px 0 14px; color:#f3f5fb; line-height:1.14; }
   .verdict-card p { color:var(--mist); margin:0 0 14px; font-size:15.5px; }
   .verdict-card p b { color:var(--silver); font-weight:600; }
-  .verdict-card .tilt { font-family:"IBM Plex Mono",monospace; font-size:12.5px; color:var(--faint);
-    border-top:1px solid var(--line-soft); padding-top:14px; margin-top:4px; }
+  .verdict-card .tilt { font-family:var(--mono); font-size:12.5px; color:var(--faint); border-top:1px solid var(--line-soft); padding-top:14px; margin-top:4px; }
+  .retake { margin-top:16px; }
 
   .cta { margin-top:22px; display:grid; grid-template-columns:1fr 1fr; gap:14px; }
-  .cta a { display:block; text-decoration:none; border:1px solid var(--line-soft); border-radius:14px;
-    padding:20px; transition:border-color .15s, transform .15s; background:var(--ink-2); }
+  .cta a { display:block; text-decoration:none; border:1px solid var(--line-soft); border-radius:14px; padding:20px; transition:border-color .15s, transform .15s; background:var(--ink-2); }
   .cta a:hover { border-color:var(--moon-dim); transform:translateY(-2px); }
-  .cta .k { font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--moon-dim); }
-  .cta .t { font-family:"Bricolage Grotesque",sans-serif; font-weight:700; font-size:18px; color:#eef1f9; margin:8px 0 6px; }
+  .cta .k { font-family:var(--mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--moon-dim); }
+  .cta .t { font-family:var(--display); font-weight:700; font-size:18px; color:#eef1f9; margin:8px 0 6px; }
   .cta .d { font-size:13.5px; color:var(--mist); }
-  .cta .go { color:var(--moon); font-family:"IBM Plex Mono",monospace; font-size:13px; margin-top:10px; display:inline-block; }
+  .cta .go { color:var(--moon); font-family:var(--mono); font-size:13px; margin-top:10px; display:inline-block; }
 
   .sub { margin-top:16px; background:var(--ink-2); border:1px solid var(--line-soft); border-radius:14px; padding:22px; }
-  .sub .k { font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--moon-dim); }
-  .sub .t { font-family:"Bricolage Grotesque",sans-serif; font-weight:700; font-size:19px; color:#eef1f9; margin:8px 0 4px; }
+  .sub .k { font-family:var(--mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--moon-dim); }
+  .sub .t { font-family:var(--display); font-weight:700; font-size:19px; color:#eef1f9; margin:8px 0 4px; }
   .sub .d { font-size:14px; color:var(--mist); margin:0 0 14px; }
   .sub iframe { width:100%; border:1px solid var(--line-soft); border-radius:10px; background:#fff; }
 
-  footer { border-top:1px solid var(--line-soft); margin-top:46px; padding:26px 0 60px; }
-  footer .bnd { font-family:"IBM Plex Mono",monospace; font-size:12px; color:var(--moon-dim); letter-spacing:.04em; }
-  footer .dis { color:var(--faint); font-size:12px; margin-top:10px; line-height:1.6; max-width:52em; }
-  footer .lk { margin-top:14px; font-family:"IBM Plex Mono",monospace; font-size:12.5px; }
+  footer { border-top:1px solid var(--line-soft); margin-top:44px; padding:24px 0 56px; }
+  footer .bnd { font-family:var(--mono); font-size:12px; color:var(--moon-dim); letter-spacing:.03em; }
+  footer .dis { color:var(--faint); font-size:12px; margin-top:10px; line-height:1.6; max-width:54em; }
+  footer .lk { margin-top:14px; font-family:var(--mono); font-size:12.5px; }
   footer .lk a { color:var(--mist); text-decoration:none; }
   footer .lk a:hover { color:var(--silver); }
 
   @media (max-width:560px){ .cta { grid-template-columns:1fr; } }
-  @media (prefers-reduced-motion:reduce){ html{scroll-behavior:auto;} .result.show{animation:none;} }
+  @media (prefers-reduced-motion:reduce){ html{scroll-behavior:auto;} .qcard,.result{animation:none;} }
 </style>
 </head>
 <body>
 <div class="wrap">
-
   <header class="bar">
     <a class="brand" href="https://moonstack.org"><span class="mk" aria-hidden="true"></span><span class="nm">MoonStack</span></a>
-    <nav><a href="/mirror/">Trading Mirror →</a></nav>
+    <div class="langbar" id="langbar"></div>
   </header>
-
-  <section class="hero">
-    <span class="eyebrow">Edge self-check · 2 minutes</span>
-    <h1>Is your edge a measured fact, or <span class="glow">a feeling?</span></h1>
-    <p class="lede">Fifteen blunt questions. They won't tell you what to buy — they'll tell you whether you're trading a process or gambling with extra steps. Your result is on this page. No email to see it.</p>
-    <div class="meta"><span><b>15</b> questions</span><span><b>~2 min</b></span><span><b>No signup</b> to see your result</span></div>
-  </section>
-
-  <div class="progress">
-    <div class="lbl"><span>Progress</span><span id="pcount">0 / 15</span></div>
-    <div class="bar"><i id="pbar"></i></div>
-  </div>
-
-  <section class="quiz" id="quiz"></section>
-
-  <div class="submit-wrap">
-    <button class="btn solid" id="seeResult" disabled>See my result</button>
-    <div class="submit-note" id="submitNote">Answer all 15 to see your diagnosis.</div>
-  </div>
-
-  <section class="result" id="result">
-    <div class="verdict-card">
-      <div class="score" id="rScore"></div>
-      <h2 id="rTitle"></h2>
-      <div id="rBody"></div>
-      <div class="tilt" id="rTilt"></div>
-    </div>
-
-    <div class="cta">
-      <a href="/mirror/">
-        <div class="k">Stop guessing</div>
-        <div class="t">Measure it for real</div>
-        <div class="d">Trading Mirror scores exactly this — which setups carry edge, where execution leaks, luck vs skill. Free, runs in your browser.</div>
-        <span class="go">Open Trading Mirror →</span>
-      </a>
-      <a href="https://mumuquant.substack.com">
-        <div class="k">Go deeper</div>
-        <div class="t">Read the reviews</div>
-        <div class="d">A newsletter that redlines real trade reviews — expectancy, execution leaks, luck vs skill. No tips, no hype.</div>
-        <span class="go">mumuquant.substack.com →</span>
-      </a>
-    </div>
-
-    <div class="sub">
-      <div class="k">Optional</div>
-      <div class="t">Get it in your inbox</div>
-      <div class="d">New reviews, plus a heads-up when the deeper tools open. One blunt email at a time — unsubscribe anytime.</div>
-      <iframe src="https://mumuquant.substack.com/embed" height="150" frameborder="0" scrolling="no" title="Subscribe to mumuquant"></iframe>
-    </div>
-  </section>
-
-  <footer>
-    <div class="bnd">No stock tips · nothing for sale · no paid mentorship · no managed accounts</div>
-    <div class="dis">This self-check is a personal technical-research tool, not investment advice. It scores your own process from your own answers — nothing is uploaded, and your answers never leave this page. Results are a mirror, not a forecast.</div>
-    <div class="lk"><a href="https://moonstack.org">← MoonStack</a> &nbsp;·&nbsp; <a href="/mirror/">Trading Mirror</a></div>
-  </footer>
-
+  <main id="main"></main>
+  <footer id="foot"></footer>
 </div>
 
 <script>
 (function () {
-  // Each option scores 0–2 toward a "process / edge" score. Q10–Q12 are bias questions
-  // phrased so the disciplined answer still scores high (no reverse math needed).
-  var QUESTIONS = [
-    { q: "Before you open a trade, do you write down a hypothesis you could later prove wrong?",
-      o: [["One sentence — with what would make it wrong",2],["Loosely, in my head",1],["No — I just take the setup",0]] },
-    { q: "After you close a trade, do you mark whether your original hypothesis held or broke?",
-      o: [["Yes, every time",2],["Roughly",1],["I only look at whether I made money",0]] },
-    { q: "Do you size trades against a defined risk and track results in R (risk multiples)?",
-      o: [["Yes — defined risk, tracked in R",2],["I know my risk but don't track R",1],["I track dollars / percent only",0]] },
-    { q: "A trade made money, but your reason for entering was wrong. You call it:",
-      o: [["A lucky win — the process failed",2],["A win",0],["I don't separate the two",0]] },
-    { q: "A trade lost money, but your process was sound. You call it:",
-      o: [["A good decision with a bad outcome",2],["A loss / a mistake",0],["Depends on my mood",0]] },
-    { q: "Do you review winning trades as hard as losing ones?",
-      o: [["Yes — wins hide as many mistakes as losses",2],["Mostly just losses",1],["I rarely review",0]] },
-    { q: "Can you name your single most profitable setup — with a number behind it?",
-      o: [["Yes — I know its expectancy",2],["I have a gut feeling",1],["No",0]] },
-    { q: "Can you name the setup that quietly bleeds your account?",
-      o: [["Yes — I've measured it",2],["I suspect one",1],["No",0]] },
-    { q: "When you enter, is your risk defined before the trade?",
-      o: [["Always — predefined",2],["Usually",1],["I decide as it moves",0]] },
-    { q: "How often do you add to a losing position with no new hypothesis?",
-      o: [["Never",2],["Occasionally",1],["Often",0]] },
-    { q: "How often do you take a trade with no real thesis — bored, or the group chat is loud?",
-      o: [["Almost never",2],["Sometimes",1],["Often",0]] },
-    { q: "Do you exit before your target because you're afraid to give back profit?",
-      o: [["Rarely — I follow the plan",2],["Sometimes",1],["Often",0]] },
-    { q: "If I asked for your win rate AND your average win-to-loss in R, could you tell me?",
-      o: [["Both, from records",2],["One of them",1],["Neither",0]] },
-    { q: "Your trading journal is:",
-      o: [["Structured — hypothesis, R, and a review per trade",2],["A few scattered notes",1],["Nonexistent",0]] },
-    { q: "Honestly: is your edge a measured fact, or a feeling?",
-      o: [["A measured fact",2],["A bit of both",1],["A feeling",0]] }
-  ];
+  var LANGS = [["en","EN"],["zh-Hans","简体"],["zh-Hant","繁體"],["ja","日本語"],["ko","한국어"]];
+  var SCORES = [[2,1,0],[2,1,0],[2,1,0],[2,0,0],[2,0,0],[2,1,0],[2,1,0],[2,1,0],[2,1,0],[2,1,0],[2,1,0],[2,1,0],[2,1,0],[2,1,0],[2,1,0]];
+  var RANGES = [{min:0,max:30,r:"0–30%"},{min:31,max:55,r:"31–55%"},{min:56,max:80,r:"56–80%"},{min:81,max:100,r:"81–100%"}];
+  var cache = {};
 
-  var BUCKETS = [
-    { min: 0,  max: 30,
-      score: "0–30% · You're gambling, not trading",
-      title: "Right now, you're gambling — not trading.",
-      body: "<p>No written hypothesis, no records, no way to tell a good decision from a good outcome. That's not an edge; it's a slot machine you operate manually.</p><p><b>The good news is blunt: this is the most fixable state there is.</b> You have nowhere to go but up, and the first move is free — write one falsifiable sentence before every trade, and mark whether it held.</p>",
-      tilt: "// where you sit: no edge, no measurement" },
-    { min: 31, max: 55,
-      score: "31–55% · You can't tell luck from skill",
-      title: "You have instincts. You have no proof.",
-      body: "<p>There's a process in there somewhere — but without measurement you cannot separate a real edge from a lucky streak. A green month feels like skill; a red one feels like the market's fault. Both are guesses.</p><p><b>Until you measure it, you're flying blind in good weather.</b> Start tracking every trade in R and marking hypothesis held / broke. The fog clears fast once the numbers exist.</p>",
-      tilt: "// where you sit: maybe edge — unmeasured" },
-    { min: 56, max: 80,
-      score: "56–80% · You have an edge, and you're leaking it",
-      title: "The edge is real. The discipline isn't there yet.",
-      body: "<p>You know what works and you mostly do the work. What's taxing you is execution — early exits, the occasional no-thesis trade, adding to a loser. The leak is small per trade and brutal over a year.</p><p><b>You don't need a new strategy. You need to stop paying the execution tax.</b> Measure edge and execution as two separate axes, and the leak becomes obvious — and pluggable.</p>",
-      tilt: "// where you sit: edge present · execution leaking" },
-    { min: 81, max: 100,
-      score: "81–100% · You're compounding a measured edge",
-      title: "You're doing the work most traders won't.",
-      body: "<p>Hypothesis, R, review on wins and losses alike — you treat trading as a process you can measure, not a feeling you defend. That alone puts you ahead of most.</p><p><b>From here it's pruning and scaling:</b> retire the setups that quietly bleed, lean harder into the ones with proven expectancy, and watch the decay on the ones that used to work.</p>",
-      tilt: "// where you sit: edge present · execution holding" }
-  ];
+  function detectLang() {
+    try {
+      var n = (navigator.language || "en").toLowerCase();
+      if (n.indexOf("zh") === 0) return (n.indexOf("tw")>-1 || n.indexOf("hk")>-1 || n.indexOf("hant")>-1) ? "zh-Hant" : "zh-Hans";
+      if (n.indexOf("ja") === 0) return "ja";
+      if (n.indexOf("ko") === 0) return "ko";
+    } catch (e) {}
+    return "en";
+  }
 
-  var answers = new Array(QUESTIONS.length).fill(null);
-  var quizEl = document.getElementById('quiz');
+  var state = { lang: detectLang(), c: null, screen: "intro", cur: 0, ans: new Array(15).fill(null) };
+  var mainEl = document.getElementById("main");
+  var footEl = document.getElementById("foot");
+  var esc = function (s) { return String(s); };
 
-  QUESTIONS.forEach(function (item, qi) {
-    var qDiv = document.createElement('div');
-    qDiv.className = 'q';
-    var head = '<div class="qn">Q' + (qi + 1) + ' / 15</div><div class="qt">' + item.q + '</div>';
-    var opts = '<div class="opts">';
-    item.o.forEach(function (opt, oi) {
-      opts += '<label class="opt" data-q="' + qi + '" data-o="' + oi + '" data-s="' + opt[1] + '">' +
-              '<input type="radio" name="q' + qi + '" />' +
-              '<span class="dot"></span><span class="ot">' + opt[0] + '</span></label>';
+  function load(lang) {
+    if (cache[lang]) return Promise.resolve(cache[lang]);
+    return fetch("i18n/" + lang + ".json").then(function (r) { return r.json(); }).then(function (j) { cache[lang] = j; return j; });
+  }
+
+  function renderLangbar() {
+    var bar = document.getElementById("langbar");
+    bar.innerHTML = "";
+    LANGS.forEach(function (L) {
+      var btn = document.createElement("button");
+      btn.textContent = L[1];
+      if (L[0] === state.lang) btn.className = "on";
+      btn.onclick = function () { if (L[0] === state.lang) return; state.lang = L[0]; switchLang(); };
+      bar.appendChild(btn);
     });
-    opts += '</div>';
-    qDiv.innerHTML = head + opts;
-    quizEl.appendChild(qDiv);
-  });
+  }
 
-  var pbar = document.getElementById('pbar');
-  var pcount = document.getElementById('pcount');
-  var seeBtn = document.getElementById('seeResult');
-  var note = document.getElementById('submitNote');
+  function switchLang() {
+    renderLangbar();
+    load(state.lang).then(function (c) { state.c = c; render(); });
+  }
 
-  quizEl.addEventListener('click', function (e) {
-    var lab = e.target.closest('.opt');
-    if (!lab) return;
-    var qi = +lab.getAttribute('data-q');
-    var s = +lab.getAttribute('data-s');
-    // clear siblings
-    lab.parentNode.querySelectorAll('.opt').forEach(function (n) { n.classList.remove('sel'); });
-    lab.classList.add('sel');
-    var input = lab.querySelector('input'); if (input) input.checked = true;
-    answers[qi] = s;
-    var done = answers.filter(function (a) { return a !== null; }).length;
-    pbar.style.width = (done / QUESTIONS.length * 100) + '%';
-    pcount.textContent = done + ' / ' + QUESTIONS.length;
-    if (done === QUESTIONS.length) { seeBtn.disabled = false; note.textContent = 'Ready. See where you actually stand.'; }
-    else { note.textContent = (QUESTIONS.length - done) + ' left.'; }
-  });
+  function renderFooter() {
+    var c = state.c;
+    footEl.innerHTML =
+      '<div class="bnd"></div><div class="dis"></div>' +
+      '<div class="lk"><a href="https://moonstack.org"></a> &nbsp;·&nbsp; <a href="/mirror/"></a></div>';
+    footEl.querySelector(".bnd").textContent = c.boundary;
+    footEl.querySelector(".dis").textContent = c.disclaimer;
+    var links = footEl.querySelectorAll(".lk a");
+    links[0].textContent = c.footMoonstack;
+    links[1].textContent = c.footMirror;
+  }
 
-  seeBtn.addEventListener('click', function () {
-    if (answers.some(function (a) { return a === null; })) return;
-    var raw = answers.reduce(function (a, b) { return a + b; }, 0);
-    var maxRaw = QUESTIONS.length * 2;
-    var pct = Math.round(raw / maxRaw * 100);
-    var b = BUCKETS.find(function (x) { return pct >= x.min && pct <= x.max; }) || BUCKETS[0];
-    document.getElementById('rScore').textContent = b.score;
-    document.getElementById('rTitle').textContent = b.title;
-    document.getElementById('rBody').innerHTML = b.body;
-    document.getElementById('rTilt').textContent = b.tilt + "  ·  your score: " + pct + "%";
-    var res = document.getElementById('result');
-    res.classList.add('show');
-    res.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  });
+  function render() {
+    var c = state.c;
+    document.documentElement.lang = state.lang.indexOf("zh") === 0 ? state.lang : state.lang;
+    if (state.screen === "intro") renderIntro(c);
+    else if (state.screen === "quiz") renderQuiz(c);
+    else renderResult(c);
+    renderFooter();
+  }
+
+  function renderIntro(c) {
+    var m = document.createElement("section"); m.className = "hero";
+    m.innerHTML =
+      '<span class="eyebrow"></span>' +
+      '<h1><span class="a"></span><span class="glow"></span></h1>' +
+      '<p class="lede"></p>' +
+      '<div class="meta"></div>' +
+      '<button class="btn solid" id="startBtn"></button>';
+    m.querySelector(".eyebrow").textContent = c.eyebrow;
+    m.querySelector(".a").textContent = c.h1a;
+    m.querySelector(".glow").textContent = c.h1b;
+    m.querySelector(".lede").textContent = c.lede;
+    var meta = m.querySelector(".meta");
+    c.meta.forEach(function (t) { var s = document.createElement("span"); s.innerHTML = "<b>" + esc(t) + "</b>"; meta.appendChild(s); });
+    m.querySelector("#startBtn").textContent = c.start;
+    mainEl.innerHTML = ""; mainEl.appendChild(m);
+    m.querySelector("#startBtn").onclick = function () { state.screen = "quiz"; render(); window.scrollTo({top:0}); };
+  }
+
+  function renderQuiz(c) {
+    var i = state.cur;
+    var q = c.questions[i];
+    var done = state.ans.filter(function (a) { return a !== null; }).length;
+    var pct = Math.round((i) / 15 * 100);
+    var sec = document.createElement("div");
+    sec.innerHTML =
+      '<div class="qhead"><div class="qmeta"><span class="qp"></span><span class="qd"></span></div>' +
+      '<div class="qbar"><i style="width:' + (i/15*100) + '%"></i></div></div>' +
+      '<div class="qcard"><div class="qn"></div><div class="qt"></div><div class="opts"></div>' +
+      '<div class="qnav"><button class="btn ghost" id="backBtn"></button><span class="note"></span></div></div>';
+    sec.querySelector(".qp").textContent = c.progress;
+    sec.querySelector(".qd").textContent = (i + 1) + " / 15";
+    sec.querySelector(".qn").textContent = "Q" + (i + 1) + " / 15";
+    sec.querySelector(".qt").textContent = q.q;
+    var opts = sec.querySelector(".opts");
+    q.o.forEach(function (text, oi) {
+      var b = document.createElement("button");
+      b.className = "opt" + (state.ans[i] === oi ? " sel" : "");
+      b.innerHTML = '<span class="dot"></span><span class="ot"></span>';
+      b.querySelector(".ot").textContent = text;
+      b.onclick = function () { choose(i, oi); };
+      opts.appendChild(b);
+    });
+    var back = sec.querySelector("#backBtn");
+    back.textContent = c.back;
+    back.style.visibility = i === 0 ? "hidden" : "visible";
+    back.onclick = function () { if (state.cur > 0) { state.cur--; render(); } };
+    var note = sec.querySelector(".note");
+    note.textContent = state.ans[i] === null ? c.answerToContinue : "";
+    mainEl.innerHTML = ""; mainEl.appendChild(sec);
+  }
+
+  function choose(i, oi) {
+    state.ans[i] = oi;
+    // reflect selection immediately
+    var opts = mainEl.querySelectorAll(".opt");
+    opts.forEach(function (n, k) { n.classList.toggle("sel", k === oi); });
+    setTimeout(function () {
+      if (state.cur < 14) { state.cur++; render(); }
+      else { state.screen = "result"; render(); window.scrollTo({top:0}); }
+    }, 260);
+  }
+
+  function renderResult(c) {
+    var raw = state.ans.reduce(function (a, oi, qi) { return a + (oi === null ? 0 : SCORES[qi][oi]); }, 0);
+    var pct = Math.round(raw / 30 * 100);
+    var idx = 0;
+    for (var k = 0; k < RANGES.length; k++) { if (pct >= RANGES[k].min && pct <= RANGES[k].max) { idx = k; break; } }
+    var b = c.buckets[idx];
+    var sec = document.createElement("div"); sec.className = "result";
+    sec.innerHTML =
+      '<div class="verdict-card"><div class="score"></div><h2></h2><div class="body"></div><div class="tilt"></div></div>' +
+      '<button class="btn ghost retake" id="retake"></button>' +
+      '<div class="cta">' +
+        '<a class="ctaA" href="/mirror/"><div class="k"></div><div class="t"></div><div class="d"></div><span class="go"></span></a>' +
+        '<a class="ctaB" href="https://mumuquant.substack.com"><div class="k"></div><div class="t"></div><div class="d"></div><span class="go"></span></a>' +
+      '</div>' +
+      '<div class="sub"><div class="k"></div><div class="t"></div><div class="d"></div>' +
+        '<iframe src="https://mumuquant.substack.com/embed" height="150" frameborder="0" scrolling="no" title="Subscribe"></iframe></div>';
+    sec.querySelector(".score").textContent = RANGES[idx].r + " · " + b.band;
+    sec.querySelector("h2").textContent = b.title;
+    sec.querySelector(".body").innerHTML = b.body;
+    sec.querySelector(".tilt").textContent = "// " + b.tilt + "  ·  " + c.scorePrefix + ": " + pct + "%";
+    sec.querySelector("#retake").textContent = c.back;
+    var a = sec.querySelector(".ctaA");
+    a.querySelector(".k").textContent = c.ctaStopK; a.querySelector(".t").textContent = c.ctaStopT;
+    a.querySelector(".d").textContent = c.ctaStopD; a.querySelector(".go").textContent = c.ctaStopGo;
+    var bb = sec.querySelector(".ctaB");
+    bb.querySelector(".k").textContent = c.ctaDeepK; bb.querySelector(".t").textContent = c.ctaDeepT;
+    bb.querySelector(".d").textContent = c.ctaDeepD; bb.querySelector(".go").textContent = c.ctaDeepGo;
+    var su = sec.querySelector(".sub");
+    su.querySelector(".k").textContent = c.subK; su.querySelector(".t").textContent = c.subT; su.querySelector(".d").textContent = c.subD;
+    mainEl.innerHTML = ""; mainEl.appendChild(sec);
+    sec.querySelector("#retake").onclick = function () { state.screen = "quiz"; state.cur = 14; render(); window.scrollTo({top:0}); };
+  }
+
+  // boot
+  renderLangbar();
+  load(state.lang).then(function (c) { state.c = c; render(); })
+    .catch(function () { if (state.lang !== "en") { state.lang = "en"; switchLang(); } });
 })();
 </script>
 </body>
