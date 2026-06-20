@@ -530,13 +530,10 @@
     nodes.push({ el: el, key: el.getAttribute(html ? "data-i18n-html" : "data-i18n"), html: html, en: html ? el.innerHTML : el.textContent });
   });
   function detect() {
+    // Publisher homepage defaults to English; a manual pick persists. Visitors
+    // switch via the selector. (The /check/ and /mirror/ funnel tools still
+    // auto-match the browser language.)
     try { var s = localStorage.getItem(KEY); if (s) return s; } catch (e) {}
-    var n = (navigator.language || "en").toLowerCase();
-    if (n.indexOf("zh") === 0) return (n.indexOf("tw") > -1 || n.indexOf("hk") > -1 || n.indexOf("hant") > -1) ? "zh-Hant" : "zh-Hans";
-    if (n.indexOf("ja") === 0) return "ja";
-    if (n.indexOf("ko") === 0) return "ko";
-    if (n.indexOf("pt") === 0) return "pt";
-    if (n.indexOf("es") === 0) return "es";
     return "en";
   }
   function apply(d) {
