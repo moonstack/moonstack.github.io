@@ -23,6 +23,7 @@
     --faint:    #59628c;
     --live:     #79cdaa;
     --review:   #b8a06a;
+    --cjk: "Noto Sans SC","Noto Sans TC","Noto Sans JP","Noto Sans KR","PingFang SC","Hiragino Sans","Microsoft YaHei","Malgun Gothic";
     --maxw: 1080px;
   }
   * { box-sizing: border-box; }
@@ -31,7 +32,7 @@
     margin: 0;
     background: var(--ink);
     color: var(--silver);
-    font-family: "IBM Plex Sans", system-ui, -apple-system, Segoe UI, sans-serif;
+    font-family: "IBM Plex Sans", var(--cjk), system-ui, -apple-system, Segoe UI, sans-serif;
     font-size: 16px;
     line-height: 1.65;
     font-weight: 400;
@@ -52,7 +53,7 @@
   a { color: inherit; }
 
   .eyebrow {
-    font-family: "IBM Plex Mono", monospace;
+    font-family: "IBM Plex Mono", var(--cjk), monospace;
     font-size: 11.5px;
     letter-spacing: .22em;
     text-transform: uppercase;
@@ -77,19 +78,26 @@
     box-shadow: 0 0 14px rgba(244,226,176,.35);
   }
   .brand .nm { font-weight: 600; letter-spacing: .01em; color: var(--silver); font-size: 16px; }
-  nav.top { display: flex; gap: 26px; }
+  nav.top { display: flex; gap: 26px; align-items: center; }
   nav.top a {
     text-decoration: none; color: var(--mist); font-size: 14px;
     font-family: "IBM Plex Mono", monospace; letter-spacing: .02em;
     transition: color .15s;
   }
   nav.top a:hover { color: var(--silver); }
+  .lang-sel {
+    font-family: "IBM Plex Mono", var(--cjk), monospace; font-size: 12px;
+    background: var(--ink-2); color: var(--silver);
+    border: 1px solid var(--line); border-radius: 7px;
+    padding: 5px 7px; cursor: pointer;
+  }
+  .lang-sel:hover { border-color: var(--moon-dim); }
 
   /* ---------- hero ---------- */
   .hero { display: grid; grid-template-columns: 1.35fr .65fr; gap: 40px; align-items: center;
           padding: 96px 0 78px; }
   .hero h1 {
-    font-family: "Bricolage Grotesque", sans-serif;
+    font-family: "Bricolage Grotesque", var(--cjk), sans-serif;
     font-weight: 800;
     font-size: clamp(40px, 7.2vw, 76px);
     line-height: .98;
@@ -103,7 +111,7 @@
   .hero-cta { margin-top: 32px; display: flex; gap: 14px; flex-wrap: wrap; }
   .btn {
     display: inline-flex; align-items: center; gap: 8px;
-    font-family: "IBM Plex Mono", monospace; font-size: 13.5px; letter-spacing: .02em;
+    font-family: "IBM Plex Mono", var(--cjk), monospace; font-size: 13.5px; letter-spacing: .02em;
     text-decoration: none; padding: 11px 18px; border-radius: 9px;
     border: 1px solid var(--line); color: var(--silver);
     transition: border-color .15s, background .15s, transform .15s;
@@ -130,7 +138,7 @@
   .principles div { padding: 22px 20px 24px; border-left: 1px solid var(--line-soft); }
   .principles div:first-child { border-left: none; }
   .principles .k {
-    font-family: "IBM Plex Mono", monospace; font-size: 12px; letter-spacing: .12em;
+    font-family: "IBM Plex Mono", var(--cjk), monospace; font-size: 12px; letter-spacing: .12em;
     text-transform: uppercase; color: var(--moon-dim); margin-bottom: 7px;
   }
   .principles .v { font-size: 14px; color: var(--mist); line-height: 1.5; }
@@ -139,10 +147,10 @@
   section.products { padding: 84px 0 36px; }
   .sec-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
   .sec-head h2 {
-    font-family: "Bricolage Grotesque", sans-serif; font-weight: 700;
+    font-family: "Bricolage Grotesque", var(--cjk), sans-serif; font-weight: 700;
     font-size: clamp(26px, 4vw, 38px); letter-spacing: -.015em; margin: 10px 0 0; color: #eef1f9;
   }
-  .sec-head p { margin: 0; color: var(--faint); font-size: 14px; font-family: "IBM Plex Mono", monospace; }
+  .sec-head p { margin: 0; color: var(--faint); font-size: 14px; font-family: "IBM Plex Mono", var(--cjk), monospace; }
 
   .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 38px; }
   .card {
@@ -157,19 +165,19 @@
     width: 46px; height: 46px; border-radius: 11px; flex: none;
     background: #0c1024; padding: 2px; box-shadow: 0 0 0 1px var(--line-soft);
   }
-  .card .nm { font-family: "Bricolage Grotesque", sans-serif; font-weight: 700; font-size: 20px;
+  .card .nm { font-family: "Bricolage Grotesque", var(--cjk), sans-serif; font-weight: 700; font-size: 20px;
     letter-spacing: -.01em; color: #f1f4fb; line-height: 1.15; }
   .card .nm .latin { color: var(--mist); font-weight: 600; font-size: 15px; font-family: "IBM Plex Sans"; }
   .chip {
     margin-left: auto; flex: none;
-    font-family: "IBM Plex Mono", monospace; font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase;
+    font-family: "IBM Plex Mono", var(--cjk), monospace; font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase;
     padding: 4px 9px; border-radius: 999px; white-space: nowrap;
   }
   .chip.live   { color: var(--live);   border: 1px solid rgba(121,205,170,.4);  background: rgba(121,205,170,.08); }
   .chip.review { color: var(--review); border: 1px dashed rgba(184,160,106,.55); background: rgba(184,160,106,.06); }
   .card .desc { color: var(--mist); font-size: 14.5px; margin: 0; }
   .card .meta {
-    font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--faint);
+    font-family: "IBM Plex Mono", var(--cjk), monospace; font-size: 12px; color: var(--faint);
     border-top: 1px solid var(--line-soft); padding-top: 13px; margin-top: 2px;
     display: flex; align-items: center; justify-content: space-between; gap: 12px;
   }
@@ -193,19 +201,19 @@
   .flagship.solo { grid-template-columns: 1fr; }
   .flagship.solo .fl-copy { max-width: 64ch; }
   .fl-tag {
-    font-family: "Bricolage Grotesque", sans-serif; font-weight: 700;
+    font-family: "Bricolage Grotesque", var(--cjk), sans-serif; font-weight: 700;
     font-size: clamp(21px, 2.7vw, 28px); letter-spacing: -.01em; color: #f1f4fb;
     margin: 0 0 16px; line-height: 1.16;
   }
-  .fl-tag .zh { display: block; font-family: "IBM Plex Sans", sans-serif; font-weight: 500;
+  .fl-tag .zh { display: block; font-family: "IBM Plex Sans", var(--cjk), sans-serif; font-weight: 500;
     font-size: 14px; color: var(--moon-dim); letter-spacing: .02em; margin-top: 9px; }
   .fl-desc { color: var(--mist); font-size: 15px; margin: 0 0 18px; }
   .fl-points { list-style: none; padding: 0; margin: 0 0 24px; display: flex; flex-direction: column; gap: 9px; }
-  .fl-points li { font-family: "IBM Plex Mono", monospace; font-size: 12.5px; color: var(--silver);
+  .fl-points li { font-family: "IBM Plex Mono", var(--cjk), monospace; font-size: 12.5px; color: var(--silver);
     padding-left: 22px; position: relative; }
   .fl-points li::before { content: "◇"; color: var(--moon); position: absolute; left: 0; top: 0; }
   .fl-cta { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
-  .fl-meta { font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--faint); }
+  .fl-meta { font-family: "IBM Plex Mono", var(--cjk), monospace; font-size: 12px; color: var(--faint); }
   .fl-selfcheck { margin: 16px 0 0; font-size: 13.5px; }
   .fl-selfcheck a { color: var(--moon-dim); text-decoration: none; border-bottom: 1px solid var(--line); }
   .fl-selfcheck a:hover { color: var(--moon); border-bottom-color: var(--moon-dim); }
@@ -222,7 +230,7 @@
   /* ---------- studio ---------- */
   section.studio { padding: 80px 0; border-top: 1px solid var(--line-soft); margin-top: 50px; }
   .studio .grid2 { display: grid; grid-template-columns: .8fr 1.2fr; gap: 44px; }
-  .studio h2 { font-family: "Bricolage Grotesque", sans-serif; font-weight: 700; font-size: 30px;
+  .studio h2 { font-family: "Bricolage Grotesque", var(--cjk), sans-serif; font-weight: 700; font-size: 30px;
     letter-spacing: -.015em; margin: 10px 0 0; color: #eef1f9; }
   .studio p { color: var(--mist); margin: 0 0 16px; max-width: 40em; }
   .studio p:last-child { margin-bottom: 0; }
@@ -231,7 +239,7 @@
   .studio .origin { display: flex; align-items: center; gap: 14px; margin-top: 28px; }
   .studio .origin img { width: 62px; height: 62px; padding: 8px; border-radius: 14px;
     background: rgba(216,223,244,.05); border: 1px solid var(--line-soft); }
-  .studio .origin span { font-family: "IBM Plex Mono", monospace; font-size: 11.5px;
+  .studio .origin span { font-family: "IBM Plex Mono", var(--cjk), monospace; font-size: 11.5px;
     letter-spacing: .14em; text-transform: uppercase; color: var(--faint); line-height: 1.5; }
 
   /* ---------- footer ---------- */
@@ -245,7 +253,7 @@
       radial-gradient(1.6px 1.6px at 12px 9px, #bfa256 60%, transparent 62%),
       var(--moon);
   }
-  .ft-links { display: flex; gap: 22px; font-family: "IBM Plex Mono", monospace; font-size: 13px; }
+  .ft-links { display: flex; gap: 22px; font-family: "IBM Plex Mono", var(--cjk), monospace; font-size: 13px; }
   .ft-links a { color: var(--mist); text-decoration: none; }
   .ft-links a:hover { color: var(--silver); }
   .ft-fine { color: var(--faint); font-size: 12px; margin-top: 22px; max-width: 54em; line-height: 1.6; }
@@ -279,21 +287,21 @@
       <span class="nm">MoonStack</span>
     </a>
     <nav class="top">
-      <a href="#trading">Trading</a>
-      <a href="#products">Tools</a>
-      <a href="#studio">Studio</a>
-      <a href="mailto:mumu@moonstack.org">Support</a>
+      <a href="#trading" data-i18n="navTrading">Trading</a>
+      <a href="#products" data-i18n="navTools">Tools</a>
+      <a href="#studio" data-i18n="navStudio">Studio</a>
+      <a href="mailto:mumu@moonstack.org" data-i18n="navSupport">Support</a>
     </nav>
   </header>
 
   <section class="hero">
     <div>
-      <span class="eyebrow">MoonStack · Local-first tools</span>
-      <h1>Tools that stay on <span class="glow">your machine.</span></h1>
-      <p class="lede">MoonStack builds small, focused tools — Edge extensions and a trading journal — that each do one job well and keep your data on your side of the screen. <b>No accounts, no uploads, no subscriptions.</b></p>
+      <span class="eyebrow" data-i18n="heroEyebrow">MoonStack · Local-first tools</span>
+      <h1 data-i18n-html="heroH1">Tools that stay on <span class="glow">your machine.</span></h1>
+      <p class="lede" data-i18n-html="heroLede">MoonStack builds small, focused tools — Edge extensions and a trading journal — that each do one job well and keep your data on your side of the screen. <b>No accounts, no uploads, no subscriptions.</b></p>
       <div class="hero-cta">
-        <a class="btn solid" href="#trading">See the tools</a>
-        <a class="btn" href="mailto:mumu@moonstack.org">Talk to us</a>
+        <a class="btn solid" href="#trading" data-i18n="ctaSeeTools">See the tools</a>
+        <a class="btn" href="mailto:mumu@moonstack.org" data-i18n="ctaTalk">Talk to us</a>
       </div>
     </div>
     <div class="moon-wrap">
@@ -329,34 +337,34 @@
   </section>
 
   <div class="principles">
-    <div><div class="k">Local-first</div><div class="v">Processing happens in your browser, not on a server.</div></div>
-    <div><div class="k">No accounts</div><div class="v">Nothing to sign up for. Install and use.</div></div>
-    <div><div class="k">Nothing uploaded</div><div class="v">Your files, pages, and screenshots never leave the device.</div></div>
-    <div><div class="k">One-time Pro</div><div class="v">Where there's a paid tier, you buy it once. No subscriptions.</div></div>
+    <div><div class="k" data-i18n="prin1k">Local-first</div><div class="v" data-i18n="prin1v">Processing happens in your browser, not on a server.</div></div>
+    <div><div class="k" data-i18n="prin2k">No accounts</div><div class="v" data-i18n="prin2v">Nothing to sign up for. Install and use.</div></div>
+    <div><div class="k" data-i18n="prin3k">Nothing uploaded</div><div class="v" data-i18n="prin3v">Your files, pages, and screenshots never leave the device.</div></div>
+    <div><div class="k" data-i18n="prin4k">One-time Pro</div><div class="v" data-i18n="prin4v">Where there's a paid tier, you buy it once. No subscriptions.</div></div>
   </div>
 
   <section class="trading" id="trading">
     <div class="sec-head">
       <div>
-        <span class="eyebrow">Trading tools</span>
-        <h2>Trading Mirror <span class="chip live">Live</span></h2>
+        <span class="eyebrow" data-i18n="tradeEyebrow">Trading tools</span>
+        <h2>Trading Mirror <span class="chip live" data-i18n="chipLive">Live</span></h2>
       </div>
-      <p>// local-first · your own data</p>
+      <p data-i18n="tradeMeta">// local-first · your own data</p>
     </div>
     <article class="flagship">
       <div class="fl-copy">
-        <p class="fl-tag">Don't predict the market. Verify your hypotheses.</p>
-        <p class="fl-desc">Write a falsifiable hypothesis before you open a trade, then reconcile it at the close. The bias microscope shows which hypothesis types actually carry edge, where execution leaks money, and what was luck versus skill.</p>
+        <p class="fl-tag" data-i18n="flTag">Don't predict the market. Verify your hypotheses.</p>
+        <p class="fl-desc" data-i18n="flDesc">Write a falsifiable hypothesis before you open a trade, then reconcile it at the close. The bias microscope shows which hypothesis types actually carry edge, where execution leaks money, and what was luck versus skill.</p>
         <ul class="fl-points">
-          <li>Edge × execution, shown separately</li>
-          <li>Expectancy (R / trade) by hypothesis type</li>
-          <li>Luck vs skill — not just P&amp;L</li>
+          <li data-i18n="flPoint1">Edge × execution, shown separately</li>
+          <li data-i18n="flPoint2">Expectancy (R / trade) by hypothesis type</li>
+          <li data-i18n="flPoint3">Luck vs skill — not just P&amp;L</li>
         </ul>
         <div class="fl-cta">
-          <a class="btn solid" href="/mirror/">Open Trading Mirror →</a>
-          <span class="fl-meta">Free · runs locally · bring your own AI key</span>
+          <a class="btn solid" href="/mirror/" data-i18n="flCta">Open Trading Mirror →</a>
+          <span class="fl-meta" data-i18n="flMeta">Free · runs locally · bring your own AI key</span>
         </div>
-        <p class="fl-selfcheck"><a href="/check/">Not sure where you stand? Take the 2-minute edge self-check →</a></p>
+        <p class="fl-selfcheck" data-i18n-html="flSelfcheck"><a href="/check/">Not sure where you stand? Take the 2-minute edge self-check →</a></p>
       </div>
       <a class="fl-shot" href="/mirror/" aria-label="Open Trading Mirror">
         <img src="mirror-dashboard.png" alt="Trading Mirror dashboard — hypothesis hit rate, R equity curve, edge × execution quadrant" />
@@ -367,10 +375,10 @@
   <section class="products" id="products">
     <div class="sec-head">
       <div>
-        <span class="eyebrow">Browser tools</span>
-        <h2>Five Edge extensions.</h2>
+        <span class="eyebrow" data-i18n="prodEyebrow">Browser tools</span>
+        <h2 data-i18n="prodH2">Five Edge extensions.</h2>
       </div>
-      <p>// runs locally · minimal permissions</p>
+      <p data-i18n="prodMeta">// runs locally · minimal permissions</p>
     </div>
 
     <div class="grid">
@@ -382,15 +390,15 @@
           <div>
             <div class="nm">旁注 <span class="latin">Marginalia</span></div>
           </div>
-          <span class="chip live">Live</span>
+          <span class="chip live" data-i18n="chipLive">Live</span>
         </div>
-        <p class="desc">Your own local Claude in the Edge sidebar — summarize, translate, compare pages, read images, and search the web, all on your own subscription.</p>
-        <p class="note">Uses your Claude. Nothing is routed through us.</p>
+        <p class="desc" data-i18n="card1desc">Your own local Claude in the Edge sidebar — summarize, translate, compare pages, read images, and search the web, all on your own subscription.</p>
+        <p class="note" data-i18n="card1note">Uses your Claude. Nothing is routed through us.</p>
         <div class="meta">
-          <span>Free</span>
+          <span data-i18n="card1price">Free</span>
           <span class="lk">
-            <a href="https://mumuquant.github.io/marginalia/privacy.html" target="_blank" rel="noopener">Privacy ↗</a>
-            <a class="get" href="https://microsoftedge.microsoft.com/addons/detail/palanohmdiinhicjjomcnklginnihcpk" target="_blank" rel="noopener">Get on Edge →</a>
+            <a href="https://mumuquant.github.io/marginalia/privacy.html" target="_blank" rel="noopener" data-i18n="privacyLk">Privacy ↗</a>
+            <a class="get" href="https://microsoftedge.microsoft.com/addons/detail/palanohmdiinhicjjomcnklginnihcpk" target="_blank" rel="noopener" data-i18n="getEdge">Get on Edge →</a>
           </span>
         </div>
       </article>
@@ -400,15 +408,15 @@
         <div class="top">
           <img class="ic" src="icons/privasnap.png" alt="PrivaSnap icon" />
           <div><div class="nm">PrivaSnap</div></div>
-          <span class="chip live">Live</span>
+          <span class="chip live" data-i18n="chipLive">Live</span>
         </div>
-        <p class="desc">Capture the visible area, a region, or a full page, then annotate with arrows, boxes, and text and save as PNG — entirely in your browser.</p>
-        <p class="note">No screenshot is ever uploaded.</p>
+        <p class="desc" data-i18n="card2desc">Capture the visible area, a region, or a full page, then annotate with arrows, boxes, and text and save as PNG — entirely in your browser.</p>
+        <p class="note" data-i18n="card2note">No screenshot is ever uploaded.</p>
         <div class="meta">
-          <span>Free · blur/redact is one-time Pro</span>
+          <span data-i18n="card2price">Free · blur/redact is one-time Pro</span>
           <span class="lk">
-            <a href="https://mumuquant.github.io/privasnap/privacy.html" target="_blank" rel="noopener">Privacy ↗</a>
-            <a class="get" href="https://microsoftedge.microsoft.com/addons/detail/alhkkghnihplpbohhmmajekmdlcpdfpe" target="_blank" rel="noopener">Get on Edge →</a>
+            <a href="https://mumuquant.github.io/privasnap/privacy.html" target="_blank" rel="noopener" data-i18n="privacyLk">Privacy ↗</a>
+            <a class="get" href="https://microsoftedge.microsoft.com/addons/detail/alhkkghnihplpbohhmmajekmdlcpdfpe" target="_blank" rel="noopener" data-i18n="getEdge">Get on Edge →</a>
           </span>
         </div>
       </article>
@@ -418,15 +426,15 @@
         <div class="top">
           <img class="ic" src="icons/pdfmark.png" alt="PDFMark icon" />
           <div><div class="nm">PDFMark</div></div>
-          <span class="chip live">Live</span>
+          <span class="chip live" data-i18n="chipLive">Live</span>
         </div>
-        <p class="desc">Highlight, underline, and annotate PDFs in a local viewer — arrows, boxes, and notes. No upload, no account.</p>
-        <p class="note">Your PDF never leaves the tab.</p>
+        <p class="desc" data-i18n="card3desc">Highlight, underline, and annotate PDFs in a local viewer — arrows, boxes, and notes. No upload, no account.</p>
+        <p class="note" data-i18n="card3note">Your PDF never leaves the tab.</p>
         <div class="meta">
-          <span>Free · export is one-time Pro</span>
+          <span data-i18n="card3price">Free · export is one-time Pro</span>
           <span class="lk">
-            <a href="https://mumuquant.github.io/pdfmark/privacy.html" target="_blank" rel="noopener">Privacy ↗</a>
-            <a class="get" href="https://microsoftedge.microsoft.com/addons/detail/chijgfclbgfajfpmlkogbefggfmgpcin" target="_blank" rel="noopener">Get on Edge →</a>
+            <a href="https://mumuquant.github.io/pdfmark/privacy.html" target="_blank" rel="noopener" data-i18n="privacyLk">Privacy ↗</a>
+            <a class="get" href="https://microsoftedge.microsoft.com/addons/detail/chijgfclbgfajfpmlkogbefggfmgpcin" target="_blank" rel="noopener" data-i18n="getEdge">Get on Edge →</a>
           </span>
         </div>
       </article>
@@ -436,15 +444,15 @@
         <div class="top">
           <img class="ic" src="icons/reddisense.png" alt="ReddiSense icon" />
           <div><div class="nm">ReddiSense</div></div>
-          <span class="chip review">In review</span>
+          <span class="chip review" data-i18n="chipReview">In review</span>
         </div>
-        <p class="desc">Real-time Reddit sentiment for any stock ticker, scored bullish or bearish, with the top posts — right in the side panel.</p>
-        <p class="note">Pro adds more posts and an AI summary on your own API key.</p>
+        <p class="desc" data-i18n="card4desc">Real-time Reddit sentiment for any stock ticker, scored bullish or bearish, with the top posts — right in the side panel.</p>
+        <p class="note" data-i18n="card4note">Pro adds more posts and an AI summary on your own API key.</p>
         <div class="meta">
-          <span>Free core · one-time Pro</span>
+          <span data-i18n="card4price">Free core · one-time Pro</span>
           <span class="lk">
-            <a href="https://mumuquant.github.io/privacy.html" target="_blank" rel="noopener">Privacy ↗</a>
-            <span class="soon">Coming soon</span>
+            <a href="https://mumuquant.github.io/privacy.html" target="_blank" rel="noopener" data-i18n="privacyLk">Privacy ↗</a>
+            <span class="soon" data-i18n="soon">Coming soon</span>
           </span>
         </div>
       </article>
@@ -454,22 +462,22 @@
         <div class="top">
           <img class="ic" src="icons/filinglens.png" alt="FilingLens icon" />
           <div><div class="nm">FilingLens</div></div>
-          <span class="chip review">In review</span>
+          <span class="chip review" data-i18n="chipReview">In review</span>
         </div>
-        <p class="desc">Decode the latest insider (Form 4) trade into plain language, and redline what management changed between two 10-Q filings — pulled straight from SEC EDGAR, parsed locally.</p>
-        <p class="note">Form 4 and a preview are free; the full 10-Q redline is one-time Pro.</p>
+        <p class="desc" data-i18n="card5desc">Decode the latest insider (Form 4) trade into plain language, and redline what management changed between two 10-Q filings — pulled straight from SEC EDGAR, parsed locally.</p>
+        <p class="note" data-i18n="card5note">Form 4 and a preview are free; the full 10-Q redline is one-time Pro.</p>
         <div class="meta">
-          <span>Free core · one-time Pro</span>
+          <span data-i18n="card5price">Free core · one-time Pro</span>
           <span class="lk">
-            <a href="https://mumuquant.github.io/filinglens-privacy.html" target="_blank" rel="noopener">Privacy ↗</a>
-            <span class="soon">Coming soon</span>
+            <a href="https://mumuquant.github.io/filinglens-privacy.html" target="_blank" rel="noopener" data-i18n="privacyLk">Privacy ↗</a>
+            <span class="soon" data-i18n="soon">Coming soon</span>
           </span>
         </div>
       </article>
 
       <!-- workshop card to balance the grid -->
       <article class="card" style="background:transparent;border:1px dashed var(--line-soft);justify-content:center;align-items:center;">
-        <div style="text-align:center;color:var(--faint);font-family:'IBM Plex Mono',monospace;font-size:13px;line-height:1.7;">
+        <div style="text-align:center;color:var(--faint);font-family:'IBM Plex Mono',monospace;font-size:13px;line-height:1.7;" data-i18n-html="workshop">
           More small tools<br />in the workshop.<br />
           <a href="mailto:mumu@moonstack.org" style="color:var(--mist);text-decoration:none;border-bottom:1px solid var(--line);">Suggest one ↗</a>
         </div>
@@ -481,17 +489,17 @@
   <section class="studio" id="studio">
     <div class="grid2">
       <div>
-        <span class="eyebrow">Who makes this</span>
-        <h2>A small studio.</h2>
+        <span class="eyebrow" data-i18n="studioEyebrow">Who makes this</span>
+        <h2 data-i18n="studioH2">A small studio.</h2>
         <div class="origin">
           <img src="moon-2015.png" alt="MoonStack mark" width="62" height="62" />
-          <span>MoonStack<br />since 2015</span>
+          <span data-i18n-html="studioSince">MoonStack<br />since 2015</span>
         </div>
       </div>
       <div>
-        <p>MoonStack is a small independent studio. We make browser extensions that are deliberately narrow: one job, done locally, asking for as few permissions as the job allows.</p>
-        <p>Where a tool has a paid tier, it's a one-time purchase — buy it once, own it. No subscriptions, no telemetry, no ads, no remote code.</p>
-        <p>Questions, bug reports, and feature requests go straight to a human: <a class="mail" href="mailto:mumu@moonstack.org">mumu@moonstack.org</a></p>
+        <p data-i18n="studioP1">MoonStack is a small independent studio. We make browser extensions that are deliberately narrow: one job, done locally, asking for as few permissions as the job allows.</p>
+        <p data-i18n="studioP2">Where a tool has a paid tier, it's a one-time purchase — buy it once, own it. No subscriptions, no telemetry, no ads, no remote code.</p>
+        <p data-i18n-html="studioP3">Questions, bug reports, and feature requests go straight to a human: <a class="mail" href="mailto:mumu@moonstack.org">mumu@moonstack.org</a></p>
       </div>
     </div>
   </section>
@@ -500,17 +508,58 @@
     <div class="ft-row">
       <div class="left">
         <span class="mk2" aria-hidden="true"></span>
-        <span>© 2026 MoonStack</span>
+        <span data-i18n="footCopy">© 2026 MoonStack</span>
       </div>
       <div class="ft-links">
-        <a href="https://mumuquant.github.io/terms.html" target="_blank" rel="noopener">Terms</a>
-        <a href="https://mumuquant.github.io/refund.html" target="_blank" rel="noopener">Refund</a>
-        <a href="mailto:mumu@moonstack.org">Support</a>
+        <a href="https://mumuquant.github.io/terms.html" target="_blank" rel="noopener" data-i18n="footTerms">Terms</a>
+        <a href="https://mumuquant.github.io/refund.html" target="_blank" rel="noopener" data-i18n="footRefund">Refund</a>
+        <a href="mailto:mumu@moonstack.org" data-i18n="footSupport">Support</a>
       </div>
     </div>
-    <p class="ft-fine">Each tool's privacy policy is linked on its card above. MoonStack extensions run locally and do not collect personal data; where a tool fetches public data (e.g. SEC filings or Reddit posts), it does so directly from the source at your request. Not investment advice.</p>
+    <p class="ft-fine" data-i18n="footFine">Each tool's privacy policy is linked on its card above. MoonStack extensions run locally and do not collect personal data; where a tool fetches public data (e.g. SEC filings or Reddit posts), it does so directly from the source at your request. Not investment advice.</p>
   </footer>
 
 </div>
+
+<script>
+(function () {
+  var LANGS = [["en","EN"],["zh-Hans","简体"],["zh-Hant","繁體"],["ja","日本語"],["ko","한국어"],["es","Español"],["pt","Português"]];
+  var KEY = "ms-lang", cache = {}, nodes = [];
+  document.querySelectorAll("[data-i18n],[data-i18n-html]").forEach(function (el) {
+    var html = el.hasAttribute("data-i18n-html");
+    nodes.push({ el: el, key: el.getAttribute(html ? "data-i18n-html" : "data-i18n"), html: html, en: html ? el.innerHTML : el.textContent });
+  });
+  function detect() {
+    try { var s = localStorage.getItem(KEY); if (s) return s; } catch (e) {}
+    var n = (navigator.language || "en").toLowerCase();
+    if (n.indexOf("zh") === 0) return (n.indexOf("tw") > -1 || n.indexOf("hk") > -1 || n.indexOf("hant") > -1) ? "zh-Hant" : "zh-Hans";
+    if (n.indexOf("ja") === 0) return "ja";
+    if (n.indexOf("ko") === 0) return "ko";
+    if (n.indexOf("pt") === 0) return "pt";
+    if (n.indexOf("es") === 0) return "es";
+    return "en";
+  }
+  function apply(d) {
+    nodes.forEach(function (o) {
+      var v = d && d[o.key]; if (v == null) v = o.en;
+      if (o.html) o.el.innerHTML = v; else o.el.textContent = v;
+    });
+    document.title = (d && d.title) || "MoonStack — local-first browser tools";
+  }
+  var sel = document.createElement("select");
+  sel.className = "lang-sel"; sel.setAttribute("aria-label", "Language");
+  LANGS.forEach(function (L) { var o = document.createElement("option"); o.value = L[0]; o.textContent = L[1]; sel.appendChild(o); });
+  function set(lang) {
+    try { localStorage.setItem(KEY, lang); } catch (e) {}
+    document.documentElement.lang = lang; sel.value = lang;
+    if (lang === "en") { apply(null); return; }
+    if (cache[lang]) { apply(cache[lang]); return; }
+    fetch("i18n/" + lang + ".json").then(function (r) { return r.json(); }).then(function (j) { cache[lang] = j; apply(j); }).catch(function () { apply(null); });
+  }
+  sel.onchange = function () { set(sel.value); };
+  var nav = document.querySelector("nav.top"); if (nav) nav.appendChild(sel);
+  set(detect());
+})();
+</script>
 </body>
 </html>
