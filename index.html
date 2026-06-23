@@ -287,7 +287,6 @@
       <span class="nm">MoonStack</span>
     </a>
     <nav class="top">
-      <a href="#trading" data-i18n="navTrading">Trading</a>
       <a href="#products" data-i18n="navTools">Tools</a>
       <a href="#studio" data-i18n="navStudio">Studio</a>
       <a href="mailto:mumu@moonstack.org" data-i18n="navSupport">Support</a>
@@ -300,7 +299,7 @@
       <h1 data-i18n-html="heroH1">Tools that stay on <span class="glow">your machine.</span></h1>
       <p class="lede" data-i18n-html="heroLede">MoonStack builds small, focused tools — Edge extensions and a trading journal — that each do one job well and keep your data on your side of the screen. <b>No accounts, no uploads, no subscriptions.</b></p>
       <div class="hero-cta">
-        <a class="btn solid" href="#trading" data-i18n="ctaSeeTools">See the tools</a>
+        <a class="btn solid" href="#products" data-i18n="ctaSeeTools">See the tools</a>
         <a class="btn" href="mailto:mumu@moonstack.org" data-i18n="ctaTalk">Talk to us</a>
       </div>
     </div>
@@ -342,35 +341,6 @@
     <div><div class="k" data-i18n="prin3k">Nothing uploaded</div><div class="v" data-i18n="prin3v">Your files, pages, and screenshots never leave the device.</div></div>
     <div><div class="k" data-i18n="prin4k">One-time Pro</div><div class="v" data-i18n="prin4v">Where there's a paid tier, you buy it once. No subscriptions.</div></div>
   </div>
-
-  <section class="trading" id="trading">
-    <div class="sec-head">
-      <div>
-        <span class="eyebrow" data-i18n="tradeEyebrow">Trading tools</span>
-        <h2>Trading Mirror <span class="chip live" data-i18n="chipLive">Live</span></h2>
-      </div>
-      <p data-i18n="tradeMeta">// local-first · your own data</p>
-    </div>
-    <article class="flagship">
-      <div class="fl-copy">
-        <p class="fl-tag" data-i18n="flTag">Don't predict the market. Verify your hypotheses.</p>
-        <p class="fl-desc" data-i18n="flDesc">Write a falsifiable hypothesis before you open a trade, then reconcile it at the close. The bias microscope shows which hypothesis types actually carry edge, where execution leaks money, and what was luck versus skill.</p>
-        <ul class="fl-points">
-          <li data-i18n="flPoint1">Edge × execution, shown separately</li>
-          <li data-i18n="flPoint2">Expectancy (R / trade) by hypothesis type</li>
-          <li data-i18n="flPoint3">Luck vs skill — not just P&amp;L</li>
-        </ul>
-        <div class="fl-cta">
-          <a class="btn solid" href="/mirror/" data-i18n="flCta">Open Trading Mirror →</a>
-          <span class="fl-meta" data-i18n="flMeta">Free · runs locally · bring your own AI key</span>
-        </div>
-        <p class="fl-selfcheck" data-i18n-html="flSelfcheck"><a href="/check/">Not sure where you stand? Take the 2-minute edge self-check →</a></p>
-      </div>
-      <a class="fl-shot" href="/mirror/" aria-label="Open Trading Mirror">
-        <img src="mirror-dashboard.png" alt="Trading Mirror dashboard — hypothesis hit rate, R equity curve, edge × execution quadrant" />
-      </a>
-    </article>
-  </section>
 
   <section class="products" id="products">
     <div class="sec-head">
@@ -531,8 +501,7 @@
   });
   function detect() {
     // Publisher homepage defaults to English; a manual pick persists. Visitors
-    // switch via the selector. (The /check/ and /mirror/ funnel tools still
-    // auto-match the browser language.)
+    // switch via the selector.
     try { var s = localStorage.getItem(KEY); if (s) return s; } catch (e) {}
     return "en";
   }
