@@ -49,5 +49,5 @@
   "footTerms": "條款",
   "footRefund": "退款",
   "footSupport": "支援",
-  "footFine": "每個工具的隱私權政策都連結在上方它的卡片上。MoonStack 擴充功能在本地執行，不收集個人資料；凡是工具會抓取公開資料的（例如 SEC 申報文件或 Reddit 貼文），都是在你的要求下直接從來源取得。非投資建議。"
+  "footFine": "每個工具的隱私權政策都連結在上方它的卡片上。MoonStack 擴充功能在本地執行，不收集個人資料；凡是工具會抓取公開資料的（例如 SEC 申報文件或 Reddit 貼文），都是在你的要求下直接從來源取得。非投資建議。本站使用 Cloudflare Web Analytics 進行匿名、無 Cookie 的瀏覽量統計——不收集個人資料，不跨站追蹤。"
 }
