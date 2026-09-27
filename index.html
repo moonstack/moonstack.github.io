@@ -3,475 +3,438 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>MoonStack — local-first browser tools</title>
-<meta name="description" content="MoonStack builds small, focused Edge extensions that run entirely on your machine. No accounts, no uploads, no subscriptions." />
+<title>MoonStack — quiet software for a loud era</title>
+<meta name="description" content="Since 2015, MoonStack has built small-batch software that respects your attention and your data. Language, creation, and privacy-first browser tools — everything we ship survives a five-layer drill." />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='13' fill='%23f4e2b0'/%3E%3Cg fill='%23bfa256'%3E%3Ccircle cx='12' cy='12' r='3.2'/%3E%3Ccircle cx='21' cy='15' r='2.2'/%3E%3Ccircle cx='15' cy='21' r='1.8'/%3E%3C/g%3E%3C/svg%3E" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;450;500;600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <style>
   :root {
-    --ink:      #0d1124;
-    --ink-2:    #141a31;
-    --ink-3:    #181f3b;
-    --line:     #29325a;
-    --line-soft:#1f2747;
-    --moon:     #f4e2b0;
-    --moon-dim: #d8c184;
-    --silver:   #d8dff4;
-    --mist:     #8d96bb;
-    --faint:    #59628c;
-    --live:     #79cdaa;
-    --review:   #b8a06a;
-    --cjk: "Noto Sans SC","Noto Sans TC","Noto Sans JP","Noto Sans KR","PingFang SC","Hiragino Sans","Microsoft YaHei","Malgun Gothic";
+    --night:    #08090d;
+    --night-2:  #0d0f15;
+    --night-3:  #12151d;
+    --line:     rgba(242,229,194,.10);
+    --line-2:   rgba(242,229,194,.18);
+    --moon:     #f2e5c2;
+    --moon-dim: #c9b586;
+    --moon-faint:#8d7f5e;
+    --text:     #e9e6de;
+    --mist:      #a7a396;
+    --faint:     #6b6960;
+    --live:      #9ecfae;
+    --serif: "Instrument Serif", "Noto Serif SC", serif;
+    --sans: "Manrope", "Noto Sans SC", system-ui, sans-serif;
+    --mono: "JetBrains Mono", monospace;
     --maxw: 1080px;
   }
-  * { box-sizing: border-box; }
-  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+  * { box-sizing: border-box; margin: 0; }
+  html { scroll-behavior: smooth; }
   body {
-    margin: 0;
-    background: var(--ink);
-    color: var(--silver);
-    font-family: "IBM Plex Sans", var(--cjk), system-ui, -apple-system, Segoe UI, sans-serif;
-    font-size: 16px;
-    line-height: 1.65;
-    font-weight: 400;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
+    background: var(--night); color: var(--text);
+    font-family: var(--sans); font-size: 16px; line-height: 1.7;
+    -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
   }
+  ::selection { background: var(--moon); color: #14110a; }
   body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
+    content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 0;
     background:
-      radial-gradient(620px 420px at 84% -6%, rgba(244,226,176,.07), transparent 70%),
-      radial-gradient(900px 600px at 12% 108%, rgba(58,80,150,.10), transparent 70%);
-    z-index: 0;
+      radial-gradient(760px 480px at 82% -8%, rgba(242,229,194,.06), transparent 70%),
+      radial-gradient(900px 620px at 8% 112%, rgba(70,84,140,.10), transparent 72%);
   }
-  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 26px; position: relative; z-index: 1; }
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 28px; position: relative; z-index: 1; }
   a { color: inherit; }
 
-  .eyebrow {
-    font-family: "IBM Plex Mono", var(--cjk), monospace;
-    font-size: 11.5px;
-    letter-spacing: .22em;
-    text-transform: uppercase;
-    color: var(--moon-dim);
-    font-weight: 500;
+  .mono-label {
+    font-family: var(--mono); font-size: 11px; letter-spacing: .32em;
+    text-transform: uppercase; color: var(--moon-dim); font-weight: 500;
   }
 
-  /* ---------- top bar ---------- */
+  /* ============ header ============ */
   header.bar {
-    position: relative; z-index: 2;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 22px 0 0;
+    position: sticky; top: 0; z-index: 20;
+    background: rgba(8,9,13,.82); backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
   }
+  .bar-in { display: flex; align-items: center; justify-content: space-between; padding: 16px 0; }
   .brand { display: flex; align-items: center; gap: 11px; text-decoration: none; }
   .brand .mk {
-    width: 26px; height: 26px; border-radius: 50%; flex: none;
+    width: 22px; height: 22px; border-radius: 50%; flex: none;
     background:
-      radial-gradient(3.2px 3.2px at 9px 9px, #bfa256 60%, transparent 62%),
-      radial-gradient(2.2px 2.2px at 18px 13px, #bfa256 60%, transparent 62%),
-      radial-gradient(1.6px 1.6px at 12px 18px, #bfa256 60%, transparent 62%),
+      radial-gradient(2.8px 2.8px at 8px 8px, #bfa256 60%, transparent 62%),
+      radial-gradient(2px 2px at 15px 11px, #bfa256 60%, transparent 62%),
+      radial-gradient(1.4px 1.4px at 10px 15px, #bfa256 60%, transparent 62%),
       var(--moon);
-    box-shadow: 0 0 14px rgba(244,226,176,.35);
+    box-shadow: 0 0 16px rgba(242,229,194,.3);
   }
-  .brand .nm { font-weight: 600; letter-spacing: .01em; color: var(--silver); font-size: 16px; }
+  .brand .nm { font-family: var(--serif); font-size: 21px; color: var(--text); letter-spacing: .01em; }
   nav.top { display: flex; gap: 26px; align-items: center; }
   nav.top a {
-    text-decoration: none; color: var(--mist); font-size: 14px;
-    font-family: "IBM Plex Mono", monospace; letter-spacing: .02em;
-    transition: color .15s;
+    text-decoration: none; color: var(--mist); font-size: 13px; font-weight: 500;
+    letter-spacing: .05em; transition: color .15s; white-space: nowrap;
   }
-  nav.top a:hover { color: var(--silver); }
+  nav.top a:hover { color: var(--moon); }
   .lang-sel {
-    font-family: "IBM Plex Mono", var(--cjk), monospace; font-size: 12px;
-    background: var(--ink-2); color: var(--silver);
-    border: 1px solid var(--line); border-radius: 7px;
-    padding: 5px 7px; cursor: pointer;
+    font-family: var(--mono); font-size: 11.5px; background: var(--night-2); color: var(--text);
+    border: 1px solid var(--line-2); border-radius: 7px; padding: 5px 8px; cursor: pointer;
   }
   .lang-sel:hover { border-color: var(--moon-dim); }
 
-  /* ---------- hero ---------- */
-  .hero { display: grid; grid-template-columns: 1.35fr .65fr; gap: 40px; align-items: center;
-          padding: 96px 0 78px; }
-  .hero h1 {
-    font-family: "Bricolage Grotesque", var(--cjk), sans-serif;
-    font-weight: 800;
-    font-size: clamp(40px, 7.2vw, 76px);
-    line-height: .98;
-    letter-spacing: -.02em;
-    margin: 18px 0 0;
-    color: #f3f5fb;
+  /* ============ hero ============ */
+  .hero { position: relative; padding: 120px 0 96px; overflow: hidden; }
+  .hero .moonart {
+    position: absolute; top: 34px; right: 26px; width: 300px; height: 300px;
+    opacity: .88; animation: glow 8s ease-in-out infinite; pointer-events: none;
   }
-  .hero h1 .glow { color: var(--moon); }
-  .hero .lede { margin: 26px 0 0; max-width: 30em; color: var(--mist); font-size: 18px; }
-  .hero .lede b { color: var(--silver); font-weight: 600; }
-  .hero-cta { margin-top: 32px; display: flex; gap: 14px; flex-wrap: wrap; }
+  @keyframes glow {
+    0%,100% { filter: drop-shadow(0 0 26px rgba(242,229,194,.22)); }
+    50%     { filter: drop-shadow(0 0 44px rgba(242,229,194,.34)); }
+  }
+  .hero .inner { max-width: 660px; position: relative; }
+  .hero h1 {
+    font-family: var(--serif); font-weight: 400;
+    font-size: clamp(52px, 8.2vw, 104px); line-height: 1.0; letter-spacing: -.012em;
+    color: var(--text); margin: 26px 0 0;
+  }
+  .hero h1 em { font-style: italic; color: var(--moon); }
+  .hero .lede { margin: 30px 0 0; max-width: 33em; color: var(--mist); font-size: 17.5px; line-height: 1.75; }
+  .hero .lede b { color: var(--text); font-weight: 600; }
+  .hero .cta { margin-top: 40px; display: flex; gap: 14px; flex-wrap: wrap; }
   .btn {
-    display: inline-flex; align-items: center; gap: 8px;
-    font-family: "IBM Plex Mono", var(--cjk), monospace; font-size: 13.5px; letter-spacing: .02em;
-    text-decoration: none; padding: 11px 18px; border-radius: 9px;
-    border: 1px solid var(--line); color: var(--silver);
-    transition: border-color .15s, background .15s, transform .15s;
+    display: inline-flex; align-items: center; gap: 9px; text-decoration: none;
+    font-size: 13.5px; font-weight: 600; letter-spacing: .04em;
+    padding: 13px 22px; border-radius: 999px; border: 1px solid var(--line-2);
+    color: var(--text); transition: .18s;
   }
   .btn:hover { border-color: var(--moon-dim); transform: translateY(-1px); }
-  .btn.solid { background: var(--moon); color: #221c08; border-color: var(--moon); font-weight: 500; }
-  .btn.solid:hover { background: #fbeec1; }
+  .btn.solid { background: var(--moon); color: #14110a; border-color: var(--moon); }
+  .btn.solid:hover { background: #f8efce; }
 
-  /* moon-stack signature */
-  .moon-wrap { display: flex; justify-content: center; }
-  .moon {
-    --d: 230px;
-    width: var(--d); height: var(--d);
-    filter: drop-shadow(0 0 34px rgba(244,226,176,.34));
-    animation: rise 1.1s cubic-bezier(.2,.7,.2,1) both;
+  /* ============ the drill — one quiet line ============ */
+  .drillstrip {
+    margin-top: 76px; padding: 26px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+    display: flex; align-items: baseline; justify-content: space-between; gap: 24px; flex-wrap: wrap;
   }
-  @keyframes rise { from { opacity: 0; transform: translateY(22px) scale(.96); } to { opacity: 1; transform: none; } }
+  .drillstrip .words {
+    font-family: var(--mono); font-size: 12px; color: var(--moon-faint); letter-spacing: .18em;
+    text-transform: uppercase;
+  }
+  .drillstrip .words b { color: var(--moon-dim); font-weight: 500; }
+  .drillstrip .words span.sep { color: var(--faint); margin: 0 10px; }
+  .drillstrip .say { font-family: var(--serif); font-style: italic; font-size: 19px; color: var(--mist); }
+  .drillstrip .say b { color: var(--moon); font-weight: 400; }
 
-  /* ---------- principles strip ---------- */
-  .principles {
-    display: grid; grid-template-columns: repeat(4, 1fr);
-    border-top: 1px solid var(--line-soft); border-bottom: 1px solid var(--line-soft);
-  }
-  .principles div { padding: 22px 20px 24px; border-left: 1px solid var(--line-soft); }
-  .principles div:first-child { border-left: none; }
-  .principles .k {
-    font-family: "IBM Plex Mono", var(--cjk), monospace; font-size: 12px; letter-spacing: .12em;
-    text-transform: uppercase; color: var(--moon-dim); margin-bottom: 7px;
-  }
-  .principles .v { font-size: 14px; color: var(--mist); line-height: 1.5; }
-
-  /* ---------- products ---------- */
-  section.products { padding: 84px 0 36px; }
-  .sec-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  /* ============ sections ============ */
+  section { padding: 96px 0 0; }
+  .sec-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 14px; }
   .sec-head h2 {
-    font-family: "Bricolage Grotesque", var(--cjk), sans-serif; font-weight: 700;
-    font-size: clamp(26px, 4vw, 38px); letter-spacing: -.015em; margin: 10px 0 0; color: #eef1f9;
+    font-family: var(--serif); font-weight: 400;
+    font-size: clamp(34px, 5vw, 56px); line-height: 1.05; letter-spacing: -.01em; color: var(--text);
+    margin-top: 12px;
   }
-  .sec-head p { margin: 0; color: var(--faint); font-size: 14px; font-family: "IBM Plex Mono", var(--cjk), monospace; }
+  .sec-head h2 em { font-style: italic; color: var(--moon); }
+  .sec-head .meta { font-family: var(--mono); font-size: 12px; color: var(--faint); }
 
-  .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 38px; }
-  .card {
-    background: linear-gradient(180deg, var(--ink-3), var(--ink-2));
-    border: 1px solid var(--line-soft); border-radius: 16px;
-    padding: 24px 24px 22px; display: flex; flex-direction: column; gap: 14px;
-    transition: border-color .18s, transform .18s;
+  /* ============ story ============ */
+  .story { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 44px; }
+  .era {
+    position: relative; padding: 28px 24px 30px;
+    border: 1px solid var(--line); border-radius: 4px; background: var(--night-2);
+    opacity: 0; transform: translateY(14px); transition: opacity .7s ease, transform .7s ease, border-color .2s;
   }
-  .card:hover { border-color: var(--line); transform: translateY(-2px); }
-  .card .top { display: flex; align-items: flex-start; gap: 14px; }
-  .card img.ic {
-    width: 46px; height: 46px; border-radius: 11px; flex: none;
-    background: #0c1024; padding: 2px; box-shadow: 0 0 0 1px var(--line-soft);
+  .era.on { opacity: 1; transform: none; }
+  .era:hover { border-color: var(--line-2); }
+  .era .ph { font-size: 22px; color: var(--moon); margin-bottom: 16px; line-height: 1; }
+  .era.dark .ph { color: var(--faint); }
+  .era .yr { font-family: var(--serif); font-size: 34px; color: var(--text); line-height: 1; }
+  .era h3 {
+    font-family: var(--serif); font-style: italic; font-weight: 400;
+    font-size: 21px; color: var(--moon-dim); margin: 14px 0 10px;
   }
-  .card .nm { font-family: "Bricolage Grotesque", var(--cjk), sans-serif; font-weight: 700; font-size: 20px;
-    letter-spacing: -.01em; color: #f1f4fb; line-height: 1.15; }
-  .card .nm .latin { color: var(--mist); font-weight: 600; font-size: 15px; font-family: "IBM Plex Sans"; }
+  .era p { color: var(--mist); font-size: 14.5px; line-height: 1.7; }
+  .era .zh { margin-top: 14px; font-size: 12.5px; color: var(--moon-faint); letter-spacing: .2em; }
+
+  /* ============ next (products) ============ */
+  .next-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 44px; }
+  .pcard {
+    position: relative; padding: 44px 38px 36px;
+    background: linear-gradient(180deg, var(--night-3), var(--night-2));
+    border: 1px solid var(--line); border-radius: 4px; overflow: hidden;
+    display: flex; flex-direction: column; gap: 16px;
+    transition: border-color .2s, transform .2s;
+  }
+  .pcard:hover { border-color: var(--line-2); transform: translateY(-2px); }
+  .pcard::after {
+    content: ""; position: absolute; top: 0; left: 38px; right: 38px; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--moon-dim), transparent); opacity: .4;
+  }
+  .pcard .glyph { font-family: "Noto Serif SC", var(--serif); font-weight: 600; font-size: clamp(56px, 7vw, 84px); line-height: 1; color: var(--text); letter-spacing: .04em; }
+  .pcard .glyph small {
+    display: block; font-family: var(--mono); font-size: 12px; font-weight: 500;
+    letter-spacing: .4em; color: var(--moon-dim); margin-top: 12px;
+  }
+  .pcard .tag { font-family: var(--mono); font-size: 11px; letter-spacing: .26em; text-transform: uppercase; color: var(--faint); }
+  .pcard .desc { color: var(--mist); font-size: 15px; max-width: 40ch; }
+  .pcard .row { margin-top: auto; padding-top: 18px; border-top: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; gap: 12px; }
   .chip {
-    margin-left: auto; flex: none;
-    font-family: "IBM Plex Mono", var(--cjk), monospace; font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase;
-    padding: 4px 9px; border-radius: 999px; white-space: nowrap;
+    font-family: var(--mono); font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase;
+    padding: 4px 11px; border-radius: 999px; white-space: nowrap;
+    color: var(--live); border: 1px solid rgba(158,207,174,.35); background: rgba(158,207,174,.07);
   }
-  .chip.live   { color: var(--live);   border: 1px solid rgba(121,205,170,.4);  background: rgba(121,205,170,.08); }
-  .chip.review { color: var(--review); border: 1px dashed rgba(184,160,106,.55); background: rgba(184,160,106,.06); }
-  .card .desc { color: var(--mist); font-size: 14.5px; margin: 0; }
-  .card .meta {
-    font-family: "IBM Plex Mono", var(--cjk), monospace; font-size: 12px; color: var(--faint);
-    border-top: 1px solid var(--line-soft); padding-top: 13px; margin-top: 2px;
-    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  .pcard a.notify {
+    color: var(--moon); text-decoration: none; font-size: 13.5px; font-weight: 600;
+    border-bottom: 1px solid var(--line-2); padding-bottom: 2px; transition: .15s;
   }
-  .card .meta .lk { display: flex; gap: 16px; align-items: center; }
-  .card .meta a { color: var(--mist); text-decoration: none; border-bottom: 1px solid transparent; transition: .15s; }
-  .card .meta a:hover { color: var(--silver); border-bottom-color: var(--moon-dim); }
-  .card .meta a.get { color: var(--moon); }
-  .card .meta a.get:hover { border-bottom-color: var(--moon); }
-  .card .meta .soon { color: var(--faint); }
-  .card .note { font-size: 12.5px; color: var(--faint); margin: -4px 0 0; }
+  .pcard a.notify:hover { border-bottom-color: var(--moon); }
 
-  /* ---------- trading flagship ---------- */
-  section.trading { padding: 84px 0 0; }
-  .sec-head h2 .chip { vertical-align: middle; margin-left: 8px; }
-  .flagship {
-    margin-top: 38px;
-    display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 32px; align-items: center;
-    background: linear-gradient(180deg, var(--ink-3), var(--ink-2));
-    border: 1px solid var(--line-soft); border-radius: 20px; padding: 34px;
+  /* ============ toolbox strip ============ */
+  .strip {
+    margin-top: 44px; border: 1px solid var(--line); border-radius: 4px;
+    background: var(--night-2); padding: 24px 26px;
   }
-  .flagship.solo { grid-template-columns: 1fr; }
-  .flagship.solo .fl-copy { max-width: 64ch; }
-  .fl-tag {
-    font-family: "Bricolage Grotesque", var(--cjk), sans-serif; font-weight: 700;
-    font-size: clamp(21px, 2.7vw, 28px); letter-spacing: -.01em; color: #f1f4fb;
-    margin: 0 0 16px; line-height: 1.16;
+  .strip .lead { margin: 8px 0 20px; color: var(--mist); font-size: 14.5px; max-width: 64ch; }
+  .strip .items { display: flex; gap: 12px; flex-wrap: wrap; }
+  .tool {
+    display: flex; flex-direction: column; gap: 7px;
+    border: 1px solid var(--line); border-radius: 3px; padding: 13px 15px; min-width: 160px;
+    background: rgba(8,9,13,.55); transition: border-color .15s;
   }
-  .fl-tag .zh { display: block; font-family: "IBM Plex Sans", var(--cjk), sans-serif; font-weight: 500;
-    font-size: 14px; color: var(--moon-dim); letter-spacing: .02em; margin-top: 9px; }
-  .fl-desc { color: var(--mist); font-size: 15px; margin: 0 0 18px; }
-  .fl-points { list-style: none; padding: 0; margin: 0 0 24px; display: flex; flex-direction: column; gap: 9px; }
-  .fl-points li { font-family: "IBM Plex Mono", var(--cjk), monospace; font-size: 12.5px; color: var(--silver);
-    padding-left: 22px; position: relative; }
-  .fl-points li::before { content: "◇"; color: var(--moon); position: absolute; left: 0; top: 0; }
-  .fl-cta { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
-  .fl-meta { font-family: "IBM Plex Mono", var(--cjk), monospace; font-size: 12px; color: var(--faint); }
-  .fl-selfcheck { margin: 16px 0 0; font-size: 13.5px; }
-  .fl-selfcheck a { color: var(--moon-dim); text-decoration: none; border-bottom: 1px solid var(--line); }
-  .fl-selfcheck a:hover { color: var(--moon); border-bottom-color: var(--moon-dim); }
-  .fl-shot { display: block; border-radius: 12px; overflow: hidden; border: 1px solid var(--line-soft);
-    box-shadow: 0 18px 50px rgba(0,0,0,.42); transition: transform .18s, border-color .18s; }
-  .fl-shot:hover { transform: translateY(-2px); border-color: var(--line); }
-  .fl-shot img { display: block; width: 100%; height: auto; }
-  @media (max-width: 820px) {
-    section.trading { padding: 56px 0 0; }
-    .flagship { grid-template-columns: 1fr; padding: 22px; gap: 22px; }
-    .fl-shot { order: 2; }
-  }
+  .tool:hover { border-color: var(--line-2); }
+  .tool .t1 { display: flex; align-items: center; gap: 10px; }
+  .tool img { width: 28px; height: 28px; border-radius: 6px; background: #0c1024; padding: 1px; box-shadow: 0 0 0 1px var(--line); }
+  .tool .tname { font-weight: 600; font-size: 13.5px; color: var(--text); }
+  .tool .lks { display: flex; gap: 13px; font-family: var(--mono); font-size: 11px; }
+  .tool .lks a { color: var(--mist); text-decoration: none; }
+  .tool .lks a:hover { color: var(--text); }
+  .tool .lks a.get { color: var(--moon-dim); }
 
-  /* ---------- studio ---------- */
-  section.studio { padding: 80px 0; border-top: 1px solid var(--line-soft); margin-top: 50px; }
-  .studio .grid2 { display: grid; grid-template-columns: .8fr 1.2fr; gap: 44px; }
-  .studio h2 { font-family: "Bricolage Grotesque", var(--cjk), sans-serif; font-weight: 700; font-size: 30px;
-    letter-spacing: -.015em; margin: 10px 0 0; color: #eef1f9; }
-  .studio p { color: var(--mist); margin: 0 0 16px; max-width: 40em; }
-  .studio p:last-child { margin-bottom: 0; }
-  .studio a.mail { color: var(--moon); text-decoration: none; border-bottom: 1px solid var(--line); font-family: "IBM Plex Mono", monospace; }
-  .studio a.mail:hover { border-bottom-color: var(--moon); }
-  .studio .origin { display: flex; align-items: center; gap: 14px; margin-top: 28px; }
-  .studio .origin img { width: 62px; height: 62px; padding: 8px; border-radius: 14px;
-    background: rgba(216,223,244,.05); border: 1px solid var(--line-soft); }
-  .studio .origin span { font-family: "IBM Plex Mono", var(--cjk), monospace; font-size: 11.5px;
-    letter-spacing: .14em; text-transform: uppercase; color: var(--faint); line-height: 1.5; }
-
-  /* ---------- footer ---------- */
-  footer.ft { border-top: 1px solid var(--line-soft); padding: 34px 0 60px; }
-  .ft-row { display: flex; align-items: center; justify-content: space-between; gap: 18px; flex-wrap: wrap; }
-  .ft-row .left { display: flex; align-items: center; gap: 11px; color: var(--faint); font-size: 13px; }
-  .ft-row .mk2 {
-    width: 18px; height: 18px; border-radius: 50%; flex: none;
+  /* ============ philosophy ============ */
+  section.philo { padding: 130px 0 110px; text-align: center; }
+  .philo .mk3 {
+    width: 40px; height: 40px; margin: 0 auto 30px; border-radius: 50%;
     background:
-      radial-gradient(2.4px 2.4px at 6px 6px, #bfa256 60%, transparent 62%),
-      radial-gradient(1.6px 1.6px at 12px 9px, #bfa256 60%, transparent 62%),
+      radial-gradient(4.6px 4.6px at 13px 13px, #bfa256 60%, transparent 62%),
+      radial-gradient(3.2px 3.2px at 27px 19px, #bfa256 60%, transparent 62%),
+      radial-gradient(2.4px 2.4px at 18px 27px, #bfa256 60%, transparent 62%),
+      var(--moon);
+    box-shadow: 0 0 36px rgba(242,229,194,.28);
+  }
+  .philo h2 {
+    font-family: var(--serif); font-weight: 400;
+    font-size: clamp(36px, 6vw, 66px); line-height: 1.08; letter-spacing: -.01em; color: var(--text);
+  }
+  .philo h2 em { font-style: italic; color: var(--moon); }
+  .philo .zh { margin-top: 22px; font-family: "Noto Serif SC", serif; font-size: 15px; color: var(--moon-dim); letter-spacing: .5em; }
+  .philo .since { margin-top: 12px; font-family: var(--mono); font-size: 10.5px; letter-spacing: .4em; text-transform: uppercase; color: var(--faint); }
+
+  /* ============ footer ============ */
+  footer.ft { border-top: 1px solid var(--line); padding: 32px 0 58px; }
+  .ft-row { display: flex; align-items: center; justify-content: space-between; gap: 18px; flex-wrap: wrap; }
+  .ft-row .left { display: flex; align-items: center; gap: 10px; color: var(--faint); font-size: 13px; }
+  .ft-row .mk2 {
+    width: 15px; height: 15px; border-radius: 50%; flex: none;
+    background:
+      radial-gradient(2px 2px at 5px 5px, #bfa256 60%, transparent 62%),
+      radial-gradient(1.4px 1.4px at 10px 7px, #bfa256 60%, transparent 62%),
       var(--moon);
   }
-  .ft-links { display: flex; gap: 22px; font-family: "IBM Plex Mono", var(--cjk), monospace; font-size: 13px; }
+  .ft-links { display: flex; gap: 22px; font-family: var(--mono); font-size: 12.5px; }
   .ft-links a { color: var(--mist); text-decoration: none; }
-  .ft-links a:hover { color: var(--silver); }
-  .ft-fine { color: var(--faint); font-size: 12px; margin-top: 22px; max-width: 54em; line-height: 1.6; }
+  .ft-links a:hover { color: var(--text); }
+  .ft-fine { color: var(--faint); font-size: 12px; margin-top: 20px; max-width: 58em; line-height: 1.65; }
 
-  @media (max-width: 820px) {
-    .hero { grid-template-columns: 1fr; padding: 60px 0 56px; gap: 30px; }
-    .moon-wrap { order: -1; justify-content: flex-start; }
-    .moon { --d: 168px; }
-    .principles { grid-template-columns: repeat(2, 1fr); }
-    .principles div:nth-child(odd) { border-left: none; }
-    .principles div:nth-child(3), .principles div:nth-child(4) { border-top: 1px solid var(--line-soft); }
-    .grid { grid-template-columns: 1fr; }
-    .studio .grid2 { grid-template-columns: 1fr; gap: 18px; }
+  /* ============ reveal ============ */
+  .reveal { opacity: 0; transform: translateY(14px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.on { opacity: 1; transform: none; }
+
+  /* ============ responsive ============ */
+  @media (max-width: 860px) {
+    .hero { padding: 64px 0 56px; }
+    .hero .moonart { width: 118px; height: 118px; top: 20px; right: 20px; opacity: .55; }
+    .hero .inner { padding-top: 44px; }
+    .mono-label { font-size: 10px; letter-spacing: .16em; }
+    .story { grid-template-columns: 1fr; }
+    .next-grid { grid-template-columns: 1fr; }
+    .strip .items { display: grid; grid-template-columns: 1fr; }
+    .tool { min-width: 0; }
     nav.top { gap: 18px; }
+    section { padding: 72px 0 0; }
   }
   @media (max-width: 480px) {
     nav.top a:nth-child(1) { display: none; }
   }
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
-    .moon { animation: none; }
+    .hero .moonart { animation: none; }
+    .reveal, .era { opacity: 1 !important; transform: none !important; transition: none; }
   }
 </style>
 </head>
 <body>
-<div class="wrap">
 
-  <header class="bar">
+<header class="bar">
+  <div class="wrap bar-in">
     <a class="brand" href="/">
       <span class="mk" aria-hidden="true"></span>
       <span class="nm">MoonStack</span>
     </a>
     <nav class="top">
-      <a href="#products" data-i18n="navTools">Tools</a>
-      <a href="#studio" data-i18n="navStudio">Studio</a>
+      <a href="#story" data-i18n="navStory">Story</a>
+      <a href="#next" data-i18n="navNext">Next</a>
       <a href="mailto:mumu@moonstack.org" data-i18n="navSupport">Support</a>
     </nav>
-  </header>
-
-  <section class="hero">
-    <div>
-      <span class="eyebrow" data-i18n="heroEyebrow">MoonStack · Local-first tools</span>
-      <h1 data-i18n-html="heroH1">Tools that stay on <span class="glow">your machine.</span></h1>
-      <p class="lede" data-i18n-html="heroLede">MoonStack builds small, focused tools — Edge extensions and a trading journal — that each do one job well and keep your data on your side of the screen. <b>No accounts, no uploads, no subscriptions.</b></p>
-      <div class="hero-cta">
-        <a class="btn solid" href="#products" data-i18n="ctaSeeTools">See the tools</a>
-        <a class="btn" href="mailto:mumu@moonstack.org" data-i18n="ctaTalk">Talk to us</a>
-      </div>
-    </div>
-    <div class="moon-wrap">
-      <svg class="moon" viewBox="0 0 240 240" role="img" aria-label="MoonStack">
-        <defs>
-          <radialGradient id="ms-body" cx="60%" cy="34%" r="74%">
-            <stop offset="0%" stop-color="#fbeec1" />
-            <stop offset="52%" stop-color="#f4e2b0" />
-            <stop offset="100%" stop-color="#d3bb7e" />
-          </radialGradient>
-          <radialGradient id="ms-crater" cx="42%" cy="38%" r="64%">
-            <stop offset="0%" stop-color="#a98e45" />
-            <stop offset="100%" stop-color="#ceb579" />
-          </radialGradient>
-          <radialGradient id="ms-shade" cx="32%" cy="66%" r="72%">
-            <stop offset="0%" stop-color="#1a1305" stop-opacity=".18" />
-            <stop offset="70%" stop-color="#1a1305" stop-opacity="0" />
-          </radialGradient>
-        </defs>
-        <circle cx="120" cy="120" r="100" fill="url(#ms-body)" />
-        <circle cx="120" cy="120" r="100" fill="url(#ms-shade)" />
-        <g fill="url(#ms-crater)">
-          <circle cx="96" cy="88" r="21" />
-          <circle cx="152" cy="106" r="13" />
-          <circle cx="116" cy="150" r="10" />
-          <circle cx="78" cy="142" r="6" />
-          <circle cx="168" cy="150" r="5" />
-          <circle cx="92" cy="198" r="15" />
-          <circle cx="156" cy="198" r="15" />
-        </g>
-      </svg>
-    </div>
-  </section>
-
-  <div class="principles">
-    <div><div class="k" data-i18n="prin1k">Local-first</div><div class="v" data-i18n="prin1v">Processing happens in your browser, not on a server.</div></div>
-    <div><div class="k" data-i18n="prin2k">No accounts</div><div class="v" data-i18n="prin2v">Nothing to sign up for. Install and use.</div></div>
-    <div><div class="k" data-i18n="prin3k">Nothing uploaded</div><div class="v" data-i18n="prin3v">Your files, pages, and screenshots never leave the device.</div></div>
-    <div><div class="k" data-i18n="prin4k">One-time Pro</div><div class="v" data-i18n="prin4v">Where there's a paid tier, you buy it once. No subscriptions.</div></div>
   </div>
+</header>
 
-  <section class="products" id="products">
-    <div class="sec-head">
-      <div>
-        <span class="eyebrow" data-i18n="prodEyebrow">Browser tools</span>
-        <h2 data-i18n="prodH2">Five Edge extensions.</h2>
+<div class="wrap">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="top">
+    <svg class="moonart" viewBox="0 0 240 240" aria-hidden="true">
+      <defs>
+        <radialGradient id="mb" cx="60%" cy="34%" r="74%">
+          <stop offset="0%" stop-color="#fdf6e0" />
+          <stop offset="52%" stop-color="#f2e5c2" />
+          <stop offset="100%" stop-color="#cdb680" />
+        </radialGradient>
+        <radialGradient id="mc" cx="42%" cy="38%" r="64%">
+          <stop offset="0%" stop-color="#a98e45" />
+          <stop offset="100%" stop-color="#ceb579" />
+        </radialGradient>
+      </defs>
+      <circle cx="120" cy="120" r="100" fill="url(#mb)" />
+      <g fill="url(#mc)" opacity=".85">
+        <circle cx="96" cy="88" r="21" />
+        <circle cx="152" cy="106" r="13" />
+        <circle cx="116" cy="150" r="10" />
+        <circle cx="168" cy="150" r="5" />
+      </g>
+    </svg>
+    <div class="inner">
+      <span class="mono-label" data-i18n="heroEyebrow">MoonStack · since 2015</span>
+      <h1 data-i18n-html="heroH1">Quiet software<br />for a <em>loud era.</em></h1>
+      <p class="lede" data-i18n-html="heroLede">MoonStack is a small-batch product house. For a decade we've been building software that respects two things the industry stopped respecting — <b>your attention, and your data.</b> Everything we ship has survived a drill most ideas never see.</p>
+      <div class="hero-cta">
+        <a class="btn solid" href="#next" data-i18n="ctaNext">See what's next</a>
+        <a class="btn" href="#story" data-i18n="ctaStory">Our story</a>
       </div>
-      <p data-i18n="prodMeta">// runs locally · minimal permissions</p>
     </div>
 
-    <div class="grid">
-
-      <!-- Marginalia — LIVE -->
-      <article class="card">
-        <div class="top">
-          <img class="ic" src="icons/marginalia.png" alt="旁注 Marginalia icon" />
-          <div>
-            <div class="nm">旁注 <span class="latin">Marginalia</span></div>
-          </div>
-          <span class="chip live" data-i18n="chipLive">Live</span>
-        </div>
-        <p class="desc" data-i18n="card1desc">Your own local Claude in the Edge sidebar — summarize, translate, compare pages, read images, and search the web, all on your own subscription.</p>
-        <p class="note" data-i18n="card1note">Uses your Claude. Nothing is routed through us.</p>
-        <div class="meta">
-          <span data-i18n="card1price">Free</span>
-          <span class="lk">
-            <a href="https://mumuquant.github.io/marginalia/privacy.html" target="_blank" rel="noopener" data-i18n="privacyLk">Privacy ↗</a>
-            <a class="get" href="https://microsoftedge.microsoft.com/addons/detail/palanohmdiinhicjjomcnklginnihcpk" target="_blank" rel="noopener" data-i18n="getEdge">Get on Edge →</a>
-          </span>
-        </div>
-      </article>
-
-      <!-- PrivaSnap — LIVE -->
-      <article class="card">
-        <div class="top">
-          <img class="ic" src="icons/privasnap.png" alt="PrivaSnap icon" />
-          <div><div class="nm">PrivaSnap</div></div>
-          <span class="chip live" data-i18n="chipLive">Live</span>
-        </div>
-        <p class="desc" data-i18n="card2desc">Capture the visible area, a region, or a full page, then annotate with arrows, boxes, and text and save as PNG — entirely in your browser.</p>
-        <p class="note" data-i18n="card2note">No screenshot is ever uploaded.</p>
-        <div class="meta">
-          <span data-i18n="card2price">Free · blur/redact is one-time Pro</span>
-          <span class="lk">
-            <a href="https://mumuquant.github.io/privasnap/privacy.html" target="_blank" rel="noopener" data-i18n="privacyLk">Privacy ↗</a>
-            <a class="get" href="https://microsoftedge.microsoft.com/addons/detail/alhkkghnihplpbohhmmajekmdlcpdfpe" target="_blank" rel="noopener" data-i18n="getEdge">Get on Edge →</a>
-          </span>
-        </div>
-      </article>
-
-      <!-- PDFMark — LIVE -->
-      <article class="card">
-        <div class="top">
-          <img class="ic" src="icons/pdfmark.png" alt="PDFMark icon" />
-          <div><div class="nm">PDFMark</div></div>
-          <span class="chip live" data-i18n="chipLive">Live</span>
-        </div>
-        <p class="desc" data-i18n="card3desc">Highlight, underline, and annotate PDFs in a local viewer — arrows, boxes, and notes. No upload, no account.</p>
-        <p class="note" data-i18n="card3note">Your PDF never leaves the tab.</p>
-        <div class="meta">
-          <span data-i18n="card3price">Free · export is one-time Pro</span>
-          <span class="lk">
-            <a href="https://mumuquant.github.io/pdfmark/privacy.html" target="_blank" rel="noopener" data-i18n="privacyLk">Privacy ↗</a>
-            <a class="get" href="https://microsoftedge.microsoft.com/addons/detail/chijgfclbgfajfpmlkogbefggfmgpcin" target="_blank" rel="noopener" data-i18n="getEdge">Get on Edge →</a>
-          </span>
-        </div>
-      </article>
-
-      <!-- ReddiSense — LIVE -->
-      <article class="card">
-        <div class="top">
-          <img class="ic" src="icons/reddisense.png" alt="ReddiSense icon" />
-          <div><div class="nm">ReddiSense</div></div>
-          <span class="chip live" data-i18n="chipLive">Live</span>
-        </div>
-        <p class="desc" data-i18n="card4desc">Real-time Reddit sentiment for any stock ticker, scored bullish or bearish, with the top posts — right in the side panel.</p>
-        <p class="note" data-i18n="card4note">Pro adds more posts and an AI summary on your own API key.</p>
-        <div class="meta">
-          <span data-i18n="card4price">Free core · one-time Pro</span>
-          <span class="lk">
-            <a href="https://mumuquant.github.io/privacy.html" target="_blank" rel="noopener" data-i18n="privacyLk">Privacy ↗</a>
-            <a class="get" href="https://microsoftedge.microsoft.com/addons/detail/eaijennloifgaccenhnofdbdgeaajpka" target="_blank" rel="noopener" data-i18n="getEdge">Get on Edge →</a>
-          </span>
-        </div>
-      </article>
-
-      <!-- FilingLens — LIVE -->
-      <article class="card">
-        <div class="top">
-          <img class="ic" src="icons/filinglens.png" alt="FilingLens icon" />
-          <div><div class="nm">FilingLens</div></div>
-          <span class="chip live" data-i18n="chipLive">Live</span>
-        </div>
-        <p class="desc" data-i18n="card5desc">Decode the latest insider (Form 4) trade into plain language, and redline what management changed between two 10-Q filings — pulled straight from SEC EDGAR, parsed locally.</p>
-        <p class="note" data-i18n="card5note">Form 4 and a preview are free; the full 10-Q redline is one-time Pro.</p>
-        <div class="meta">
-          <span data-i18n="card5price">Free core · one-time Pro</span>
-          <span class="lk">
-            <a href="https://mumuquant.github.io/filinglens-privacy.html" target="_blank" rel="noopener" data-i18n="privacyLk">Privacy ↗</a>
-            <a class="get" href="https://microsoftedge.microsoft.com/addons/detail/filinglens/kafojigincjppedajbclhmcoadlcdkbm" target="_blank" rel="noopener" data-i18n="getEdge">Get on Edge →</a>
-          </span>
-        </div>
-      </article>
-
-      <!-- workshop card to balance the grid -->
-      <article class="card" style="background:transparent;border:1px dashed var(--line-soft);justify-content:center;align-items:center;">
-        <div style="text-align:center;color:var(--faint);font-family:'IBM Plex Mono',monospace;font-size:13px;line-height:1.7;" data-i18n-html="workshop">
-          More small tools<br />in the workshop.<br />
-          <a href="mailto:mumu@moonstack.org" style="color:var(--mist);text-decoration:none;border-bottom:1px solid var(--line);">Suggest one ↗</a>
-        </div>
-      </article>
-
+    <!-- the drill — one quiet line, not a billboard -->
+    <div class="drillstrip">
+      <span class="words" data-i18n-html="drillWords"><b>essence</b><span class="sep">·</span>boundary<span class="sep">·</span>measure<span class="sep">·</span>alternative<span class="sep">·</span>value</span>
+      <span class="say" data-i18n-html="drillSay">Five layers deep before we build — <b>most ideas die there. Ours don't.</b></span>
     </div>
   </section>
 
-  <section class="studio" id="studio">
-    <div class="grid2">
-      <div>
-        <span class="eyebrow" data-i18n="studioEyebrow">Who makes this</span>
-        <h2 data-i18n="studioH2">A small studio.</h2>
-        <div class="origin">
-          <img src="moon-2015.png" alt="MoonStack mark" width="62" height="62" />
-          <span data-i18n-html="studioSince">MoonStack<br />since 2015</span>
+  <!-- ============ STORY ============ -->
+  <section id="story">
+    <div class="sec-head">
+      <h2 data-i18n-html="storyH2">One moon, <em>three phases.</em></h2>
+      <span class="meta" data-i18n="storyMeta">// the hype moved on; we never chased it</span>
+    </div>
+    <div class="story">
+      <article class="era reveal">
+        <div class="ph">●</div>
+        <p class="yr">2015</p>
+        <h3 data-i18n="tl15k">First light</h3>
+        <p data-i18n="tl15v">At the OWASP Asia Summit in Beijing, a log-analysis and alerting system cut through the big-data noise and pointed the way. MoonStack shipped: security, operations, logs, alerting.</p>
+        <p class="zh" data-i18n="tl15zh">日志纪 · 安全 · 运维 · 预警</p>
+      </article>
+      <article class="era dark reveal">
+        <div class="ph">○</div>
+        <p class="yr">2019</p>
+        <h3 data-i18n="tl19k">The dark of the moon</h3>
+        <p data-i18n="tl19v">The hype moved on. We refused to fake a need. The moon went dark for years — but a dark moon is still a moon.</p>
+        <p class="zh" data-i18n="tl19zh">沉默不是消亡 · 是拒绝伪需求</p>
+      </article>
+      <article class="era reveal">
+        <div class="ph">◑</div>
+        <p class="yr" data-i18n="tlNowYr">Now</p>
+        <h3 data-i18n="tlNowk">Waxing again</h3>
+        <p data-i18n="tlNowv">Concept inflation returns with the AI era. So do we — for language, for creation, for tools that made it through the drill.</p>
+        <p class="zh" data-i18n="tlNowzh">AI 时代 · 概念通胀 · 我们回来了</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ NEXT ============ -->
+  <section id="next">
+    <div class="sec-head">
+      <h2 data-i18n-html="nextH2">What we're building <em>next.</em></h2>
+      <span class="meta" data-i18n="nextMeta">// built slowly, on purpose</span>
+    </div>
+    <div class="next-grid">
+      <article class="pcard reveal">
+        <p class="glyph" data-i18n-html="gyGlyph">观语<small>GUANYU</small></p>
+        <p class="tag" data-i18n="gyTag">Language learning</p>
+        <p class="desc" data-i18n="gyDesc">A language companion built around how you actually read, listen, and remember — not around someone else's curriculum. Learn the way you think.</p>
+        <div class="row">
+          <span class="chip" data-i18n="chipWip">In the works</span>
+          <a class="notify" href="mailto:mumu@moonstack.org?subject=GUANYU" data-i18n="notifyMe">Be first to know →</a>
+        </div>
+      </article>
+      <article class="pcard reveal">
+        <p class="glyph" data-i18n-html="gzGlyph">观湛<small>GUANZHAN</small></p>
+        <p class="tag" data-i18n="gzTag">AI-assisted creation</p>
+        <p class="desc" data-i18n="gzDesc">AI-assisted video and content creation where every step stays inspectable and every output stays yours. See deep, create clear.</p>
+        <div class="row">
+          <span class="chip" data-i18n="chipWip">In the works</span>
+          <a class="notify" href="mailto:mumu@moonstack.org?subject=GUANZHAN" data-i18n="notifyMe">Be first to know →</a>
+        </div>
+      </article>
+    </div>
+
+    <!-- ============ TOOLBOX ============ -->
+    <div class="strip reveal">
+      <span class="mono-label" data-i18n="toolsEyebrow">Also in the toolbox</span>
+      <p class="lead" data-i18n="toolsLead">Five privacy-first Edge extensions — processing local-only, one-time Pro where paid, no subscriptions, no tracking.</p>
+      <div class="items">
+        <div class="tool">
+          <div class="t1"><img src="icons/marginalia.png" alt="Marginalia icon" /><span class="tname">Marginalia</span></div>
+          <span class="lks">
+            <a class="get" href="https://microsoftedge.microsoft.com/addons/detail/palanohmdiinhicjjomcnklginnihcpk" target="_blank" rel="noopener" data-i18n="storeLk">Store ↗</a>
+            <a href="https://mumuquant.github.io/marginalia/privacy.html" target="_blank" rel="noopener" data-i18n="privacyLk">Privacy ↗</a>
+          </span>
+        </div>
+        <div class="tool">
+          <div class="t1"><img src="icons/privasnap.png" alt="PrivaSnap icon" /><span class="tname">PrivaSnap</span></div>
+          <span class="lks">
+            <a class="get" href="https://microsoftedge.microsoft.com/addons/detail/alhkkghnihplpbohhmmajekmdlcpdfpe" target="_blank" rel="noopener" data-i18n="storeLk">Store ↗</a>
+            <a href="https://mumuquant.github.io/privasnap/privacy.html" target="_blank" rel="noopener" data-i18n="privacyLk">Privacy ↗</a>
+          </span>
+        </div>
+        <div class="tool">
+          <div class="t1"><img src="icons/pdfmark.png" alt="PDFMark icon" /><span class="tname">PDFMark</span></div>
+          <span class="lks">
+            <a class="get" href="https://microsoftedge.microsoft.com/addons/detail/chijgfclbgfajfpmlkogbefggfmgpcin" target="_blank" rel="noopener" data-i18n="storeLk">Store ↗</a>
+            <a href="https://mumuquant.github.io/pdfmark/privacy.html" target="_blank" rel="noopener" data-i18n="privacyLk">Privacy ↗</a>
+          </span>
+        </div>
+        <div class="tool">
+          <div class="t1"><img src="icons/reddisense.png" alt="ReddiSense icon" /><span class="tname">ReddiSense</span></div>
+          <span class="lks">
+            <a class="get" href="https://microsoftedge.microsoft.com/addons/detail/eaijennloifgaccenhnofdbdgeaajpka" target="_blank" rel="noopener" data-i18n="storeLk">Store ↗</a>
+            <a href="https://mumuquant.github.io/privacy.html" target="_blank" rel="noopener" data-i18n="privacyLk">Privacy ↗</a>
+          </span>
+        </div>
+        <div class="tool">
+          <div class="t1"><img src="icons/filinglens.png" alt="FilingLens icon" /><span class="tname">FilingLens</span></div>
+          <span class="lks">
+            <a class="get" href="https://microsoftedge.microsoft.com/addons/detail/filinglens/kafojigincjppedajbclhmcoadlcdkbm" target="_blank" rel="noopener" data-i18n="storeLk">Store ↗</a>
+            <a href="https://mumuquant.github.io/filinglens-privacy.html" target="_blank" rel="noopener" data-i18n="privacyLk">Privacy ↗</a>
+          </span>
         </div>
       </div>
-      <div>
-        <p data-i18n="studioP1">MoonStack is a small independent studio. We make browser extensions that are deliberately narrow: one job, done locally, asking for as few permissions as the job allows.</p>
-        <p data-i18n="studioP2">Where a tool has a paid tier, it's a one-time purchase — buy it once, own it. No subscriptions, no telemetry, no ads, no remote code.</p>
-        <p data-i18n-html="studioP3">Questions, bug reports, and feature requests go straight to a human: <a class="mail" href="mailto:mumu@moonstack.org">mumu@moonstack.org</a></p>
-      </div>
     </div>
+  </section>
+
+  <!-- ============ PHILOSOPHY ============ -->
+  <section class="philo">
+    <div class="mk3" aria-hidden="true"></div>
+    <h2 data-i18n-html="philoBig">Silent dedication.<br /><em>Visible change.</em></h2>
+    <p class="zh" data-i18n="philoZh">静默奉献 · 改变世界</p>
+    <p class="since" data-i18n="philoSince">MoonStack · since 2015</p>
   </section>
 
   <footer class="ft">
@@ -486,7 +449,7 @@
         <a href="mailto:mumu@moonstack.org" data-i18n="footSupport">Support</a>
       </div>
     </div>
-    <p class="ft-fine" data-i18n="footFine">Each tool's privacy policy is linked on its card above. MoonStack extensions run locally and do not collect personal data; where a tool fetches public data (e.g. SEC filings or Reddit posts), it does so directly from the source at your request. Not investment advice. This site uses Cloudflare Web Analytics for anonymous, cookieless visit counts — no personal data, no cross-site tracking.</p>
+    <p class="ft-fine" data-i18n="footFine">Each tool's privacy policy is linked beside it above. MoonStack tools run locally and do not collect personal data; where a tool fetches public data (e.g. SEC filings or Reddit posts), it does so directly from the source at your request. Not investment advice. This site uses Cloudflare Web Analytics for anonymous, cookieless visit counts — no personal data, no cross-site tracking.</p>
   </footer>
 
 </div>
@@ -500,8 +463,6 @@
     nodes.push({ el: el, key: el.getAttribute(html ? "data-i18n-html" : "data-i18n"), html: html, en: html ? el.innerHTML : el.textContent });
   });
   function detect() {
-    // Publisher homepage defaults to English; a manual pick persists. Visitors
-    // switch via the selector.
     try { var s = localStorage.getItem(KEY); if (s) return s; } catch (e) {}
     return "en";
   }
@@ -510,7 +471,7 @@
       var v = d && d[o.key]; if (v == null) v = o.en;
       if (o.html) o.el.innerHTML = v; else o.el.textContent = v;
     });
-    document.title = (d && d.title) || "MoonStack — local-first browser tools";
+    document.title = (d && d.title) || "MoonStack — quiet software for a loud era";
   }
   var sel = document.createElement("select");
   sel.className = "lang-sel"; sel.setAttribute("aria-label", "Language");
@@ -525,6 +486,20 @@
   sel.onchange = function () { set(sel.value); };
   var nav = document.querySelector("nav.top"); if (nav) nav.appendChild(sel);
   set(detect());
+
+  // reveal on scroll
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var els = document.querySelectorAll(".reveal");
+  if (reduce || !("IntersectionObserver" in window)) {
+    els.forEach(function (el) { el.classList.add("on"); });
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add("on"); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    els.forEach(function (el) { io.observe(el); });
+  }
 })();
 </script>
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "63917bfe05cf4a149bdc9c85467b8ef0"}'></script><!-- End Cloudflare Web Analytics -->
