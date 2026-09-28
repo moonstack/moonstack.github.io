@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FilingLens — Privacy Policy</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #131722;
+      color: #d1d4dc;
+      padding: 48px 24px;
+      line-height: 1.7;
+    }
+    .wrap { max-width: 680px; margin: 0 auto; }
+    .logo { display: flex; align-items: center; gap: 10px; margin-bottom: 40px; }
+    .logo-name { font-size: 22px; font-weight: 700; color: #f0f0f0; font-family: "Cascadia Code","Consolas",monospace; letter-spacing: .04em; }
+    .logo-name b { color: #d9b24a; }
+    .logo-badge {
+      font-size: 10px; background: #15302c; color: #26a69a;
+      border: 1px solid #1f6b5f; border-radius: 4px; padding: 2px 7px;
+      font-family: monospace; text-transform: uppercase; letter-spacing: .06em;
+    }
+    h1 { font-size: 28px; font-weight: 700; color: #f0f0f0; margin-bottom: 8px; }
+    .updated { font-size: 13px; color: #5a5f6b; margin-bottom: 40px; }
+    h2 { font-size: 16px; font-weight: 600; color: #26a69a; margin: 32px 0 10px; }
+    p { margin-bottom: 14px; font-size: 15px; color: #b0b4bd; }
+    .highlight {
+      background: #15302c; border: 1px solid #1f6b5f; border-radius: 8px;
+      padding: 16px 20px; margin: 24px 0; font-size: 15px; color: #d1d4dc;
+    }
+    .highlight strong { color: #26a69a; }
+    footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid #2a2e39;
+      font-size: 12px; color: #5a5f6b; }
+    a { color: #26a69a; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    code { font-family: monospace; font-size: 13px; color: #8b8f99; }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <div class="logo">
+    <span class="logo-name">Filing<b>Lens</b></span>
+    <span class="logo-badge">Reads SEC EDGAR · Stays Local</span>
+  </div>
+
+  <h1>Privacy Policy</h1>
+  <p class="updated">Last updated: June 19, 2026</p>
+
+  <div class="highlight">
+    <strong>Short version:</strong> FilingLens reads public SEC filings and shows them to you. It does not collect your identity, your browsing history, or the companies you look up, and it never sends any of that to us. The only documents it fetches are the public SEC filings you ask for, straight from the SEC.
+  </div>
+
+  <h2>What FilingLens does NOT collect</h2>
+  <p>FilingLens does not collect, transmit, or store:</p>
+  <p>— Your browsing history or the URLs you visit (it does not read the page you are on)<br>
+  — The tickers or companies you search — these are never sent to us<br>
+  — Personal information of any kind<br>
+  — Cookies, tracking identifiers, or analytics data</p>
+
+  <h2>What stays on your device</h2>
+  <p>FilingLens stores a few preferences locally in your browser (<code>chrome.storage.local</code>): your Pro activation flag, your chosen theme, and your recent-ticker list (used to order the quick tags). This data never leaves your device and is not shared with any server.</p>
+
+  <h2>SEC EDGAR requests</h2>
+  <p>When you look up a ticker, the extension fetches that company's public filings directly from the U.S. Securities and Exchange Commission's EDGAR system (<code>sec.gov</code>). These are public documents. The request goes from your browser straight to the SEC — we never see it — and contains only what any browser sends; it does not include your identity or any personal information. The SEC's own privacy policy governs requests to <code>sec.gov</code>.</p>
+
+  <h2>License key verification (Pro only)</h2>
+  <p>If you choose to activate Pro, the extension sends only the license-key string you entered to our verification endpoint (<code>license-proxy.mumuquant.workers.dev</code>), which checks it with the Payhip payment API. No filing content, no tickers, and no browsing data are included in this request.</p>
+
+  <h2>Permissions used</h2>
+  <p><strong>host access to sec.gov</strong> — fetch the public filings you request. Nothing else is accessed.<br>
+  <strong>storage</strong> — save your Pro flag, theme, and recent tickers locally.<br>
+  FilingLens requests no access to the pages you browse, and no tabs or scripting permissions.</p>
+
+  <h2>Third-party services</h2>
+  <p>FilingLens contacts only two services: the SEC's public EDGAR system (to fetch filings) and, for Pro users, the license-verification endpoint described above. No analytics, no telemetry, no advertising networks.</p>
+
+  <h2>Children's privacy</h2>
+  <p>FilingLens does not knowingly collect any information from anyone, including children under 13.</p>
+
+  <h2>Changes to this policy</h2>
+  <p>If this policy changes, the updated version will be posted at this URL with a revised "Last updated" date.</p>
+
+  <h2>Contact</h2>
+  <p>Questions? Email <a href="mailto:mumu@moonstack.org">mumu@moonstack.org</a></p>
+
+  <footer>
+    © 2026 FilingLens · Not affiliated with or endorsed by the U.S. Securities and Exchange Commission. Filing data is sourced from the SEC's public EDGAR system.
+  </footer>
+</div>
+</body>
+</html>

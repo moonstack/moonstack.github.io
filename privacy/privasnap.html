@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PrivaSnap — Privacy Policy</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #0f0f0f;
+      color: #d0d0d0;
+      padding: 48px 24px;
+      line-height: 1.7;
+    }
+    .wrap { max-width: 680px; margin: 0 auto; }
+    .logo { display: flex; align-items: center; gap: 10px; margin-bottom: 40px; }
+    .logo-icon { font-size: 28px; }
+    .logo-name { font-size: 22px; font-weight: 700; color: #f0f0f0; }
+    .logo-badge {
+      font-size: 10px; background: #1a3a1a; color: #4ade80;
+      border: 1px solid #166534; border-radius: 4px; padding: 2px 7px;
+    }
+    h1 { font-size: 28px; font-weight: 700; color: #f0f0f0; margin-bottom: 8px; }
+    .updated { font-size: 13px; color: #555; margin-bottom: 40px; }
+    h2 { font-size: 16px; font-weight: 600; color: #4ade80; margin: 32px 0 10px; }
+    p { margin-bottom: 14px; font-size: 15px; color: #b0b0b0; }
+    .highlight {
+      background: #0f1a0f; border: 1px solid #166534; border-radius: 8px;
+      padding: 16px 20px; margin: 24px 0; font-size: 15px; color: #ccc;
+    }
+    .highlight strong { color: #4ade80; }
+    footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid #1e1e1e;
+      font-size: 12px; color: #444; }
+    a { color: #4ade80; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <div class="logo">
+    <span class="logo-icon">📷</span>
+    <span class="logo-name">PrivaSnap</span>
+    <span class="logo-badge">Local Only</span>
+  </div>
+
+  <h1>Privacy Policy</h1>
+  <p class="updated">Last updated: June 17, 2026</p>
+
+  <div class="highlight">
+    <strong>Short version:</strong> PrivaSnap does not collect, store, or transmit your screenshots or browsing data. Everything stays on your device.
+  </div>
+
+  <h2>What PrivaSnap does NOT collect</h2>
+  <p>PrivaSnap does not collect, transmit, or store:</p>
+  <p>— Your screenshots or any image data<br>
+  — Your browsing history or visited URLs<br>
+  — Personal information of any kind<br>
+  — Cookies, tracking identifiers, or analytics data</p>
+
+  <h2>Local storage only</h2>
+  <p>Screenshots captured by PrivaSnap are stored temporarily in your browser's local storage (<code>chrome.storage.local</code>) solely to pass the image from the capture process to the annotation editor. This data never leaves your device and is cleared after the annotation session ends.</p>
+
+  <h2>License key verification (Pro only)</h2>
+  <p>If you choose to activate a Pro license, the extension sends your license key to the Payhip payment API (<code>payhip.com/api/v2/license/verify</code>) for validation. No screenshot data, browsing history, or personal information is included in this request. The request contains only the license key string you entered.</p>
+
+  <h2>Permissions used</h2>
+  <p><strong>activeTab</strong> — captures the visible content of the current tab on demand, only when you click the capture button.<br>
+  <strong>scripting</strong> — injects an overlay for area selection and controls page scrolling during full-page capture. No persistent scripts.<br>
+  <strong>storage</strong> — temporarily holds the screenshot image locally for the annotation editor.</p>
+
+  <h2>Third-party services</h2>
+  <p>PrivaSnap makes no third-party network requests except the optional Payhip license verification described above. No analytics, no telemetry, no advertising.</p>
+
+  <h2>Children's privacy</h2>
+  <p>PrivaSnap does not knowingly collect any information from anyone, including children under 13.</p>
+
+  <h2>Changes to this policy</h2>
+  <p>If this policy changes, the updated version will be posted at this URL with a revised "Last updated" date.</p>
+
+  <h2>Contact</h2>
+  <p>Questions? Email <a href="mailto:mumu@moonstack.org">mumu@moonstack.org</a></p>
+
+  <footer>
+    © 2026 PrivaSnap · <a href="https://microsoftedge.microsoft.com/addons/search/PrivaSnap">Edge Add-ons Store</a>
+  </footer>
+</div>
+</body>
+</html>
