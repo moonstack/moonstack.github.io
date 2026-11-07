@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>About — Zhu Feng · mumu · MoonStack</title>
+<meta name="description" content="Zhu Feng (mumu) — founder of MoonStack, independent researcher and developer (RFID/NFC security, reverse engineering, machine learning). Contact: mumu@moonstack.org" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='13' fill='%23f4e2b0'/%3E%3Cg fill='%23bfa256'%3E%3Ccircle cx='12' cy='12' r='3.2'/%3E%3Ccircle cx='21' cy='15' r='2.2'/%3E%3Ccircle cx='15' cy='21' r='1.8'/%3E%3C/g%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --night:    #08090d;
+    --night-2:  #0d0f15;
+    --night-3:  #12151d;
+    --line:     rgba(242,229,194,.10);
+    --line-2:   rgba(242,229,194,.18);
+    --moon:     #f2e5c2;
+    --moon-dim: #c9b586;
+    --moon-faint:#8d7f5e;
+    --text:     #e9e6de;
+    --mist:      #a7a396;
+    --faint:     #6b6960;
+    --serif: "Instrument Serif", "Noto Serif SC", serif;
+    --sans: "Manrope", "Noto Sans SC", system-ui, sans-serif;
+    --mono: "JetBrains Mono", monospace;
+    --maxw: 1080px;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--night); color: var(--text);
+    font-family: var(--sans); font-size: 16px; line-height: 1.7;
+    -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+  }
+  ::selection { background: var(--moon); color: #14110a; }
+  body::before {
+    content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 0;
+    background:
+      radial-gradient(760px 480px at 82% -8%, rgba(242,229,194,.06), transparent 70%),
+      radial-gradient(900px 620px at 8% 112%, rgba(70,84,140,.10), transparent 72%);
+  }
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 28px; position: relative; z-index: 1; }
+  a { color: inherit; }
+
+  .mono-label {
+    font-family: var(--mono); font-size: 11px; letter-spacing: .32em;
+    text-transform: uppercase; color: var(--moon-dim); font-weight: 500;
+  }
+
+  /* ============ header ============ */
+  header.bar {
+    position: sticky; top: 0; z-index: 20;
+    background: rgba(8,9,13,.82); backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .bar-in { display: flex; align-items: center; justify-content: space-between; padding: 16px 0; }
+  .brand { display: flex; align-items: center; gap: 11px; text-decoration: none; }
+  .brand .mk {
+    width: 22px; height: 22px; border-radius: 50%; flex: none;
+    background:
+      radial-gradient(2.8px 2.8px at 8px 8px, #bfa256 60%, transparent 62%),
+      radial-gradient(2px 2px at 15px 11px, #bfa256 60%, transparent 62%),
+      radial-gradient(1.4px 1.4px at 10px 15px, #bfa256 60%, transparent 62%),
+      var(--moon);
+    box-shadow: 0 0 16px rgba(242,229,194,.3);
+  }
+  .brand .nm { font-family: var(--serif); font-size: 21px; color: var(--text); letter-spacing: .01em; }
+  nav.top { display: flex; gap: 26px; align-items: center; }
+  nav.top a {
+    text-decoration: none; color: var(--mist); font-size: 13px; font-weight: 500;
+    letter-spacing: .05em; transition: color .15s; white-space: nowrap;
+  }
+  nav.top a:hover { color: var(--moon); }
+  nav.top a.here { color: var(--moon); }
+
+  /* ============ hero ============ */
+  .hero { position: relative; padding: 104px 0 72px; overflow: hidden; }
+  .hero .inner { max-width: 660px; position: relative; }
+  .hero h1 {
+    font-family: var(--serif); font-weight: 400;
+    font-size: clamp(52px, 8.2vw, 104px); line-height: 1.0; letter-spacing: -.012em;
+    color: var(--text); margin: 26px 0 0;
+  }
+  .hero h1 em { font-style: italic; color: var(--moon); }
+  .hero .lede { margin: 30px 0 0; max-width: 36em; color: var(--mist); font-size: 17.5px; line-height: 1.75; }
+  .hero .lede b { color: var(--text); font-weight: 600; }
+
+  /* ============ the fact strip ============ */
+  .factstrip {
+    margin-top: 64px; padding: 26px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+    display: flex; align-items: baseline; justify-content: space-between; gap: 24px; flex-wrap: wrap;
+  }
+  .factstrip .words {
+    font-family: var(--mono); font-size: 12.5px; color: var(--moon-dim); letter-spacing: .18em;
+    text-transform: uppercase;
+  }
+  .factstrip .words a { text-decoration: none; color: inherit; }
+  .factstrip .words a:hover { color: var(--moon); }
+  .factstrip .say { font-family: var(--serif); font-style: italic; font-size: 19px; color: var(--mist); }
+  .factstrip .say b { color: var(--moon); font-weight: 400; }
+
+  /* ============ contact ============ */
+  section.contact { padding: 120px 0 110px; text-align: center; }
+  section.contact .mk3 {
+    width: 40px; height: 40px; margin: 0 auto 30px; border-radius: 50%;
+    background:
+      radial-gradient(4.6px 4.6px at 13px 13px, #bfa256 60%, transparent 62%),
+      radial-gradient(3.2px 3.2px at 27px 19px, #bfa256 60%, transparent 62%),
+      radial-gradient(2.4px 2.4px at 18px 27px, #bfa256 60%, transparent 62%),
+      var(--moon);
+    box-shadow: 0 0 36px rgba(242,229,194,.28);
+  }
+  section.contact h2 {
+    font-family: var(--serif); font-weight: 400;
+    font-size: clamp(32px, 5.4vw, 58px); line-height: 1.1; letter-spacing: -.01em; color: var(--text);
+  }
+  section.contact h2 em { font-style: italic; color: var(--moon); }
+  section.contact .mail {
+    display: inline-block; margin-top: 34px;
+    font-family: var(--mono); font-size: clamp(17px, 2.6vw, 24px); letter-spacing: .04em;
+    color: var(--moon); text-decoration: none;
+    border: 1px solid var(--line-2); border-radius: 999px; padding: 16px 30px;
+    transition: border-color .18s, transform .18s;
+  }
+  section.contact .mail:hover { border-color: var(--moon-dim); transform: translateY(-2px); }
+  section.contact .zh { margin-top: 26px; font-family: "Noto Serif SC", serif; font-size: 14px; color: var(--moon-faint); letter-spacing: .5em; }
+
+  /* ============ footer ============ */
+  footer.ft { border-top: 1px solid var(--line); padding: 32px 0 58px; }
+  .ft-row { display: flex; align-items: center; justify-content: space-between; gap: 18px; flex-wrap: wrap; }
+  .ft-row .left { display: flex; align-items: center; gap: 10px; color: var(--faint); font-size: 13px; }
+  .ft-row .mk2 {
+    width: 15px; height: 15px; border-radius: 50%; flex: none;
+    background:
+      radial-gradient(2px 2px at 5px 5px, #bfa256 60%, transparent 62%),
+      radial-gradient(1.4px 1.4px at 10px 7px, #bfa256 60%, transparent 62%),
+      var(--moon);
+  }
+  .ft-links { display: flex; gap: 22px; font-family: var(--mono); font-size: 12.5px; }
+  .ft-links a { color: var(--mist); text-decoration: none; }
+  .ft-links a:hover { color: var(--text); }
+  .ft-fine { color: var(--faint); font-size: 12px; margin-top: 20px; max-width: 58em; line-height: 1.65; }
+
+  /* ============ responsive ============ */
+  @media (max-width: 860px) {
+    .hero { padding: 56px 0 48px; }
+    nav.top { gap: 18px; }
+    section.contact { padding: 88px 0 84px; }
+  }
+  @media (max-width: 480px) {
+    nav.top a:nth-child(1) { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="wrap bar-in">
+    <a class="brand" href="/">
+      <span class="mk" aria-hidden="true"></span>
+      <span class="nm">MoonStack</span>
+    </a>
+    <nav class="top">
+      <a href="/#story">Story</a>
+      <a href="/#next">Next</a>
+      <a class="here" href="/about_me.html" aria-current="page">About</a>
+      <a href="mailto:mumu@moonstack.org">Support</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="top">
+    <div class="inner">
+      <span class="mono-label">MoonStack · Founder · 创始人</span>
+      <h1>Zhu <em>Feng</em></h1>
+      <p class="lede">Founder of <b>MoonStack</b> — a small-batch product house building quiet, privacy-first software. Independent researcher and developer based in Anyang, China. Online, I go by <b>mumu</b>.</p>
+      <p class="lede">Research interests: RFID and NFC card security, key recovery, reverse engineering, and machine learning.</p>
+    </div>
+
+    <!-- the whole page, in one strip -->
+    <div class="factstrip">
+      <span class="words">
+        Zhu Feng<span style="color:var(--faint)"> · </span>mumu<span style="color:var(--faint)"> · </span><a href="mailto:mumu@moonstack.org">mumu@moonstack.org</a><span style="color:var(--faint)"> · </span>Anyang, China
+      </span>
+      <span class="say">That's everything public. <b>The rest is one email away.</b></span>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section class="contact">
+    <div class="mk3" aria-hidden="true"></div>
+    <h2>Something to ask, review, or report — <em>email me.</em></h2>
+    <a class="mail" href="mailto:mumu@moonstack.org">mumu@moonstack.org</a>
+    <p class="zh">少即是多 · 静水深流</p>
+  </section>
+
+  <footer class="ft">
+    <div class="ft-row">
+      <div class="left">
+        <span class="mk2" aria-hidden="true"></span>
+        <span>© 2026 MoonStack · Zhu Feng</span>
+      </div>
+      <div class="ft-links">
+        <a href="/terms.html">Terms</a>
+        <a href="/refund.html">Refund</a>
+        <a href="mailto:mumu@moonstack.org">Support</a>
+      </div>
+    </div>
+    <p class="ft-fine">This page keeps personal information to the minimum: a name, an email, a city, and the work itself. MoonStack tools run locally and do not collect personal data; this site uses Cloudflare Web Analytics for anonymous, cookieless visit counts — no personal data, no cross-site tracking.</p>
+  </footer>
+
+</div>
+
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "63917bfe05cf4a149bdc9c85467b8ef0"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
